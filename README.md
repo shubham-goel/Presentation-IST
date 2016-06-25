@@ -14,14 +14,14 @@ A broad outline of what this presentation deals with:
 - Weighted Model Counting (WMC)
 - Handling Dependent Variables with WMC
 - Counting Techniques
-	-- Exact
-	-- Approximate
+	- Exact
+	- Approximate
 - Bit-adder Approach
 - Monte-Carlo Approach
-	-- Multiprocessing/threads
+	- Multiprocessing/threads
 - Results/Scalability
 - Already Extending The Problem Statement
-	-- Heuristics
+	- Heuristics
 - What Is Next
-	-- Improving Priority Schemes
-	-- Finding Complexity Bounds
+	- Improving Priority Schemes
+	- Finding Complexity Bounds
