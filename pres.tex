@@ -1,0 +1,93 @@
+\documentclass{beamer}
+\usepackage{ifpdf}
+\usepackage{grffile}
+\usepackage{epsfig} % This package formats figures.
+\usepackage{psfrag} % This package formats figures.
+\usepackage{amsmath} % This is a package for math features.
+\usepackage{amsfonts} % This is a package for math features.
+\usepackage{amssymb} % This is a package for math features.
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+
+\usetheme{CambridgeUS}
+\begin{document}
+
+\title[Probabilistic Networks]{Networks with Probabilistic Failures}
+\subtitle[Probabilistically Scoring Message Priorities]{Scoring Message Priorities in Switched Networks with Probabilistic Failures}
+\author[Shubham]{Thomas Henzinger \inst{1} \and Guy Avni \inst{1} \and Shubham Goel \inst{2}}
+\institute[]{
+  \inst{1} Institute of Science and Technology, Austria\\[1ex]
+  \inst{2} Indian Institute of Technology, Bombay\\[1ex]
+}
+\date[Summer 2016]{Summer 2016}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview}
+In this presentation, I will talk about:
+\begin{enumerate}
+\item A practical issue that needs to be addressed
+\item What is our problem statement, how do we address that issue?
+\item How did we solve that problem?
+\item What next?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Motivation}
+When a switch has a lot of messages in its queue, the order in which messages are sent may adversely affect the performance of the network. Hence, it becomes important to know which \'priority schemes\' are better and why. As the topic suggests, we define parameters which enable us to score priority schemes for comparison.
+\end{frame}
+
+\begin{frame}
+\frametitle{Initial Work?}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem Statement}
+Given a switched network N with directed links, a set of messages M where each message m<M needs to be sent from m.source to m.target, a timeout T, and 
+\end{frame}
+
+\begin{frame}
+\frametitle{The Naive Approach}
+\begin{enumerate}
+\item Use an SMT solver to get a solution
+\item Add it's negation to the solver as a Constraint
+\item Repeat this process until there is no solution left
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Naive Approach}
+\framesubtitle{Optimization}
+Instead of adding the whole constraint, we identify a minimal sub-constraint which is sufficient for ${!AMA}$
+\end{frame}
+
+\begin{frame}
+\frametitle{Weighted Model Counting (WMC)}
+\end{frame}
+
+\begin{frame}
+\frametitle{Handling Dependent Variables with WMC}
+\end{frame}
+
+\begin{frame}
+\frametitle{Counting Techniques}
+Yes
+\pause
+\framesubtitle{Exact}
+We faced an issue :(
+Yes
+\pause
+\framesubtitle{Approximate}
+We faced an issue :(
+\end{frame}
+
+\begin{frame}
+\frametitle{Bit-Adder Approach}
+\end{frame}
+
+\end{document} 
