@@ -49,6 +49,8 @@
 \frametitle{Initial Work}
 	\framesubtitle{Time-Triggered (TT) schedules}
 
+	\vspace*{-8pt}
+
 	\begin{columns}
 	\column{0.5\textwidth}
 	\begin{figure}
@@ -88,19 +90,20 @@
 
 	\vspace*{-15pt}
 	\begin{center}
-	Disadvantage: This assumes that the network is fixed
+	TT scheduling assumes that the network is fixed\\
+	However, in practice, networks are faulty (discussed later)
 	\end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Previous Paper}
+\frametitle{Previous Paper - An Adverserial Approach}
 	\begin{itemize}
 	\item Time-Triggered Schedules
-	\item Adverserial Approach
 	\item Simple Error Recovery Protocol - forward message on some other edge
-	\item $(k,l) Resistance$ : If at most k crashes occur, at least l messages arrive\\[3ex]
+	\item $(k,l)-resistance$ : If at most $k$ crashes occur, at least $l$ messages arrive\\[3ex]
 	\end{itemize}
-	\hspace*{20pt}$ crash $ : A link goes down permanently
+	\hspace*{20pt}$ crash $ : A link goes down permanently\\[3ex]
+	In contrast to this, we study networks where the occurence of faults is probablistic. You will find a more detailed specification ahead.
 \end{frame}
 
 \begin{frame}
@@ -113,15 +116,25 @@
 	\end{itemize}
 	\item Message faults
 	\begin{itemize}
-		\item Message Losses\\[2ex]
+		\item Message Losses
+		\item Message Delays\\[2ex]
 	\end{itemize}
 	\end{itemize}
 	\pause
 	\begin{center}
 	\color{red}
-	Time-Triggered Schedules are not good enough
+	Time-Triggered Schedules are unable to handle multiple faults elegantly
 	\end{center}
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Example}
+
+
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Message Forwarding}
