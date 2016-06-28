@@ -38,7 +38,7 @@
 	\begin{description}
 	\item[G] - A directed graph
 	\item[M] - A set of messages (source,target)
-	\item[T] - A global timeout
+	\item[t] - A global timeout
 	\end{description}
 	\end{columns}
 	\vspace*{20pt}
@@ -103,6 +103,7 @@
 	\item $(k,l)-resistance$ : If at most $k$ crashes occur, at least $l$ messages arrive\\[3ex]
 	\end{itemize}
 	\hspace*{20pt}$ crash $ : A link goes down permanently\\[3ex]
+	\color{blue}
 	In contrast to this, we study networks where the occurence of faults is probablistic. You will find a more detailed specification ahead.
 \end{frame}
 
@@ -123,28 +124,36 @@
 	\pause
 	\begin{center}
 	\color{red}
-	Time-Triggered Schedules are unable to handle multiple faults elegantly
+	Things become messy with Time-Triggered Schedules.\\We move to a cleaner notion of message forwarding.
 	\end{center}
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Example}
+% \begin{frame}
+% \frametitle{Example}
 
 
 
-\end{frame}
+% \end{frame}
 
 
 \begin{frame}
 \frametitle{Message Forwarding}
-	\framesubtitle{Cleaner Notion}
-	3 Components:\\
-	\begin{enumerate}
-	\item The path selection (Paths)
-	\item The message priorities (Priority Scheme)
-	\item The algorithm (Algorithm)
-	\end{enumerate}
+	\framesubtitle{Components}
+	% \begin{enumerate}
+	\begin{block}{Paths}
+	For each message $ m\in M $, specify the possible paths that can be taken by $ m $
+	\end{block}
+
+	\begin{block}{Priority Scheme}
+	Each vertex $ v $ has a total order $ \prec _{v} $ on the set of
+	messages $ M $. $$\forall m_1,m_2 \in M,\ m_1\prec _{v}m_2 \implies m_1 \text{ has higher priority over } m_2 \text{ at } v$$
+	\end{block}
+
+	\begin{block}{Algorithm}
+	Given $Paths$ \& $Priority\ Scheme$, the $Algortihm$ decides what messages are forwarded on each link.
+	\end{block}
+	% \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -154,36 +163,37 @@
 	%$p_{omission}$ = Pr(Message Fault)\\
 	\textbf{Given}:
 	\begin{itemize}
-		\item G, M, T
+		\item G, M, t
 		\item $p_{crashes}$ = Pr(Edge Fault)
 		\item $p_{omission}$ = Pr(Message Fault)
 		\item Message Paths
 		\item Forwarding Algorithm
-		\item Priority Scheme\\[1ex]
+		\item Priority Scheme\\[3ex]
 	\end{itemize}
 	\textbf{Find}:
-	The score of the Priority Scheme, where
-	\begin{equation}
-		Score(Priority Scheme) = \Pr(AMA)
-	\end{equation}
-	\begin{flushright}
-		\textit{AMA: The Event that All Messages Arrive by time T}
-	\end{flushright}
-	\textbf{Solution: Count}
+	The score of the Priority Scheme, where\\
+	% \begin{equation}
+		$$Score(\text{Priority Scheme}) = \Pr(\text{All messages arrive by time t})$$
+	% \end{equation}
+	% \begin{flushright}
+	% 	\textit{AMA: The Event that All Messages Arrive by time T}
+	% \end{flushright}
 \end{frame}
 
-\begin{frame}
-\frametitle{The Different Approaches}
-\begin{enumerate}
-\item Naive Approach (+Optimization)
-\item Bit-Adder
-\item Weighted Model Counting
-\item Monte-Carlo Approach (+Multiprocessing)
-\end{enumerate}
-\end{frame}
+% \begin{frame}
+% \frametitle{The Different Approaches}
+% \begin{enumerate}
+% \item Naive Approach (+Optimization)
+% \item Bit-Adder
+% \item Weighted Model Counting
+% \item Monte-Carlo Approach (+Multiprocessing)
+% \end{enumerate}
+% \end{frame}
 
 \begin{frame}
 \frametitle{The Naive Approach}
+	\textbf{Solution}: $Count!\ $\\
+	\pause
 	***A flowchart***\\[3ex]
 	\pause
 	\begin{block}{Additional SMT Constraint}
@@ -191,7 +201,7 @@
 		Total\ Number\ of\ crashes = k
 	\end{equation} 
 	\begin{flushright}
-		where $k\epsilon\{0,1,2...\}$
+		where $k\in\{0,1,2...\}$
 	\end{flushright}
 	\end{block}
 	\pause
@@ -201,13 +211,18 @@
 
 
 \begin{frame}
-\frametitle{Weighted Model Counting (WMC)\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}}
-	Generalization of $SAT$ counting.\\[3ex]
+\frametitle{A Counting Approach}
+\framesubtitle{Weighted Model Counting (WMC)\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}}
+	Build $ f $\ : SAT formula to simulate the netork.\\
+	Every assignment \sigma\ corresponds to a unique crash sequence.
+	$$\sigma \vDash f \iff \text{All Message Arrive by time t}$$
+
+	WMC is a generalization of $SAT$ counting.\\
 	\begin{block}{WMC}
 	Let $f$ be a $SAT$ formula
 	\begin{eqnarray}
 		WMC(f) = \sum_{\sigma \vDash f}Weight(\sigma) \\
-		Weight(\sigma) = \prod_{l \epsilon L}{Weight(\sigma(l))}
+		Weight(\sigma) = \prod_{l \in L}{Weight(\sigma(l))}
 	\end{eqnarray}	
 	\end{block}
 \end{frame}
@@ -218,7 +233,7 @@
 	\begin{itemize}
 	\item Bit-Adder Based
 		\begin{itemize}
-		\item We simulate the execution of a circuit to convert the ony SMT constraint into SAT, then count.
+		\item We simulate the execution of a circuit to convert the ony SMT constraint into SAT, then count approximately.
 		\end{itemize}
 	
 	\item Monte-Carlo
