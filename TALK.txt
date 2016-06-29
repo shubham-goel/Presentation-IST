@@ -1,0 +1,30 @@
+TALK
+====
+Introduction
+------------
+Our goal is to send a collection of messages throughout a network of switches. We model the network as a directed graph. Each message has a source and target vertex. Hardware limitations allow sending only one message at every time step on an edge.
+
+Initial Work
+------------
+Before us, faults were usually handled by the application layer using redundant messages. Finding a TT schedule is very costly, and redundancy only makes the problem harder.
+
+Previous Paper
+--------------
+Also be thought of as a saboteur game:
+runner moves tokens on a network and saboteur tries to crash links
+
+Handling New faults
+-------------------
+example of omissions+crashes
+
+Components
+----------
+Paths used for scaling
+
+Bit-Adder
+---------
+Explain a bit more
+
+What Next
+---------
+view scoring as "model checking" and finding good message priorities as "synthesis" or "partial synthesis"

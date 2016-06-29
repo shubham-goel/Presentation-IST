@@ -29,17 +29,17 @@
 \frametitle{Introduction}
 	% A picture of a network/messages\\
 	\begin{columns}
-	\column{0.45\textwidth}
+	\column{0.6\textwidth}
+	\begin{description}
+	\item[Switched Network] $\to$ G, Directed graph
+	\item[Set of Messages] $\to$ M $\ni (source,target)$
+	\item[Global Timeout] $\to$ t
+	\end{description}
+	\column{0.4\textwidth}
 	\begin{figure}
 	\includegraphics[scale=0.3]{media/digraph2.jpg}
-	\caption{Network as a DiGraph}
+	\caption{Network $\to$ DiGraph}
 	\end{figure}
-	\column{0.55\textwidth}
-	\begin{description}
-	\item[G] - A directed graph
-	\item[M] - A set of messages (source,target)
-	\item[t] - A global timeout
-	\end{description}
 	\end{columns}
 	\vspace*{20pt}
 	Hardware Limitation : Only 1 message can be sent per link per time unit
@@ -90,7 +90,7 @@
 
 	\vspace*{-15pt}
 	\begin{center}
-	TT scheduling assumes that the network is fixed\\
+	TT scheduling assumes that the network is fixed, is costly\\
 	However, in practice, networks are faulty (discussed later)
 	\end{center}
 \end{frame}
@@ -99,13 +99,17 @@
 \frametitle{Previous Paper - An Adverserial Approach}
 	\begin{itemize}
 	\item Time-Triggered Schedules
-	\item Simple Error Recovery Protocol - forward message on some other edge
-	\item $(k,l)-resistance$ : If at most $k$ crashes occur, at least $l$ messages arrive\\[3ex]
+	\item Simple Error Recovery Protocol %- forward message on some other edge
+	\item $(k,l)-resistance$:	\\
+	If at most $k$ crashes occur, at least $l$ messages arrive\\[3ex]
 	\end{itemize}
 	\hspace*{20pt}$ crash $ : A link goes down permanently\\[3ex]
 	\pause
+	Can also be viewed as a saboteur game!\\[2ex]
+	\pause
 	\color{blue}
-	In contrast to this, we study networks where the occurence of faults is probablistic. You will find a more detailed specification ahead.
+	We now study networks with probablistic faults.\\
+	A more detailed specification ahead...
 \end{frame}
 
 \begin{frame}
@@ -118,8 +122,11 @@
 	\end{itemize}
 	\item Message faults
 	\begin{itemize}
+		\item Message Delays
 		\item Message Losses
-		\item Message Delays\\[2ex]
+		\begin{itemize}
+			\item Modelled as: Message reappears at a vertex immediately after it was sent from it.\\[2ex]
+		\end{itemize}
 	\end{itemize}
 	\end{itemize}
 	\pause
@@ -128,15 +135,6 @@
 	Things become messy with Time-Triggered Schedules.\\We move to a cleaner notion of message forwarding.
 	\end{center}
 \end{frame}
-
-
-% \begin{frame}
-% \frametitle{Example}
-
-
-
-% \end{frame}
-
 
 \begin{frame}
 \frametitle{Message Forwarding}
@@ -159,9 +157,6 @@
 
 \begin{frame}
 \frametitle{Problem Statement}
-	%Probabilistic model:\\
-	%$p_{crashes}$ = Pr(Edge Fault)\\
-	%$p_{omission}$ = Pr(Message Fault)\\
 	\textbf{Given}:
 	\begin{itemize}
 		\item G, M, t
@@ -173,12 +168,7 @@
 	\end{itemize}
 	\textbf{Find}:
 	The score of the Priority Scheme, where\\
-	% \begin{equation}
 		$$Score(\text{Priority Scheme}) = \Pr(\text{All messages arrive by time t})$$
-	% \end{equation}
-	% \begin{flushright}
-	% 	\textit{AMA: The Event that All Messages Arrive by time T}
-	% \end{flushright}
 \end{frame}
 
 % \begin{frame}
@@ -193,28 +183,29 @@
 
 \begin{frame}
 \frametitle{The Naive Approach}
-	% \textbf{Solution}: $Count!\ $\\
 	Simulate the network (message forwarding) as a SAT Program : $ f $ \\[3ex]
 	Every crash sequence \mapsto\ a unique assignment \sigma\  
 	\vspace*{-5pt}
-	$$ \sigma \vDash f \iff \text{All Message Arrive by time t} $$
-	\vspace*{5pt}
-	$$ Score(\text{Priority Scheme}) = \sum_{\sigma \vDash f}\Pr(\sigma) $$
-
+	$$ \sigma \vDash f \implies \neg(\text{All Message Arrive by time t}) $$
+	\begin{block}{$\ $}
+	$$ Score(\text{Priority Scheme}) = 1-\sum_{\sigma \vDash f}\Pr(\sigma) $$
+	\end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{The Naive Approach}
 	
 	SAT Program : $ f $ \\[3ex]
-	Finding the score:
+	\textbf{Finding the score}:\\
+	Initialize $Score(\text{Priority Scheme}):=1$
 
 	\begin{enumerate}
 		\item Get a solution $\sigma$
-		\item Calculate $\Pr(\sigma)$, add it to $Score(\text{Priority Scheme})$
+		\item Calculate $\Pr(\sigma)$, subtract it from $Score(\text{Priority Scheme})$
 		\item Add $\neg \sigma$ to the program as a constraint
 		\item Repeat this process until there is no solution left\\[3ex]
 	\end{enumerate}
+	\pause
 	\color{red}
 	There may be too many solutions!\\
 	A lot of them have negligible probabilities.\\
@@ -235,21 +226,39 @@
 	\item For successive $k\in\{0,1,2...\}$
 	\begin{enumerate}
 		\item Get a solution $\sigma$
-		\item Calculate $\Pr(\sigma)$, add it to $Score(\text{Priority Scheme})$
+		\item Calculate $\Pr(\sigma)$, subtract it from $Score(\text{Priority Scheme})$
 		\item Add $\neg \sigma$ to the program as a constraint
 		\item Repeat this process until there is no solution left
 	\end{enumerate}
 	\item Stop after reaching enough precision
 	\end{itemize}
-	\pause
-	\textbf{Optimization}: 
-	Identify and add minimal sub-constraint
 \end{frame}
 
+\begin{frame}
+\frametitle{The Naive Approach}
+\framesubtitle{Optimization} 
+	Identify and add minimal sub-constraint\\[2ex]
+	Let $ \sigma \vDash f$\\
+	\begin{itemize}
+	\item Amongst the crashes occuring at $time=0,1,2,...$,\\
+	Find the smallest $t_{doomed}$ such that\\
+	Crashes occuring until $t_{doomed}$ are sufficient for $\neg\text{(All messages arrive by t)}$\\
+	$$\text{Minimal sub-constraint} = \neg(\text{crashes occuring until }t_{doomed})$$
+	\item This is done in practice by building a SMT Program for each $time\in\{0,1,2...\}$, which is UNSAT if Crashes occuring until $t_{doomed}$ are sufficient for $\neg\text{(All messages arrive by t)}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Just for Fun!}
+	\begin{figure}
+	\includegraphics[scale=0.7]{media/xkcd1.png}
+	% \includegraphics[scale=0.4]{media/fun1.jpg}
+	\caption{\tiny Source: xkcd.com}
+	\end{figure}
+\end{frame}
 
 \begin{frame}
 \frametitle{A Counting Approach}
-% \framesubtitle{Weighted Model Counting (WMC)\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}}
 	Build $ f $\ : SAT formula to simulate the netork.\\
 	Every crash sequence \mapsto\ a unique assignment \sigma\  
 	$$\sigma \vDash f \iff \text{All Message Arrive by time t}$$
@@ -264,19 +273,40 @@
 
 \begin{frame}
 \frametitle{A Counting Approach}
-\framesubtitle{Weighted Model Counting (WMC)\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}}
+\framesubtitle{Weighted Model Counting (WMC)}
 
 	WMC is a generalization of $SAT$ counting.\\
-	Each literal $l$\ is assigned a weight s.t.\\
-	% \vspace*{-5pt}
-	$$Weight(l=True) + Weight(l=False) = 1$$\\
-	\vspace*{20pt}
-	Think of $Weight(l=True)\ as\ \Pr(l=True)$
+	\begin{block}{WMC}
+	Let $f$ be a $SAT$ formula
+	% \begin{eqnarray}
+		$$WMC(f) = \sum_{\sigma \vDash f}Weight(\sigma)$$
+		% $$Weight(\sigma) = \prod_{l \in L}{Weight(l=\sigma(l))}$$
+	% \end{eqnarray}	
+	\end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{A Counting Approach}
-\framesubtitle{Weighted Model Counting (WMC)\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}}
+\framesubtitle{Weighted Model Counting (WMC)}
+
+	Each literal $l$\ is assigned a weight s.t.\\
+	\vspace*{-5pt}
+	$$Weight(l=True) + Weight(l=False) = 1$$\\
+	% \vspace*{20pt}
+	\begin{block}{WMC}
+	Let $f$ be a $SAT$ formula, $\sigma$\ be a
+	% \begin{eqnarray}
+		% $$WMC(f) = \sum_{\sigma \vDash f}Weight(\sigma)$$
+		$$Weight(\sigma) = \prod_{l \in L}{Weight(l=\sigma(l))}$$
+	Thinking of $Weights$ as $Probabilities$,
+		$$\ \ \ \ \ \ \ \  = \prod_{l \in L}{\Pr(l=\sigma(l))}$$
+	% \end{eqnarray}	
+	\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Counting Approach}
+\framesubtitle{Weighted Model Counting (WMC)}
 
 	\begin{block}{WMC}
 	Let $f$ be a $SAT$ formula
@@ -290,14 +320,15 @@
 	% Note that $paper^{2}$ only offers a reduction from WMC problems to Unweighted Model Counting.\\
 	\pause
 	\color{red}
-	Our variables were not independent and had to make modifications.\\
-
+	Our variables were not independent!\\
+	We had to make modifications to use the WMC to UMC Reduction\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}\\
 \end{frame}
-
 
 \begin{frame}
 \frametitle{Other Approaches}
 \framesubtitle{Bit-Adder}
+	Build SMT formula $f$, as in the Naive Approach to simulate the network
+	$\sigma \vDash f\  \to$\ crash sequences where All Messages don't arrive on time
 	\begin{block}{Recall the only SMT Constraint...}
 	$$Total\ Number\ of\ crashes = k$$
 	\begin{flushright}
@@ -305,49 +336,53 @@
 	\end{flushright}
 	\end{block}
 
+	\pause
+
 	\begin{itemize}
 	\item We simulate the execution of a bit-adder circuit
-	\item Convert SMT constraint to a SAT constraint
-	\item Count, obtain probability bounds
+	\item Hence, convert this SMT constraint to a SAT constraint
+	\item We now have a purely SAT formula
+	\item Use a SAT counting tool, obtain probability bounds
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Other Approaches}
 \framesubtitle{Monte-Carlo}
-	We report $Score(\text{Priority Scheme})$ within an error $\epsilon$\ with a confidence $1-\delta$.\\[2ex]
+	Given $\epsilon \ and\ \delta$,\\
+	Report $Score(\text{Priority Scheme})$ within an error $\epsilon$\ with a confidence $1-\delta$.\\[2ex]
 	This is based on the Hoeffding's inequality.\\[2ex]
 	Method:
 	\begin{itemize}
-	\item Randomly sample a lot of points, and take their average
-	\item Uses multiprocessing for faster results
+	\item Simulate the network $n$\ times, randomly deciding faults
+	\item Amongst the $n$\ trials, $k$\ trials are successful 
+	\item $Score(\text{Priority Scheme}) \approx \frac{k}{n}$
+	\item Use multiprocessing for faster results
 	\end{itemize}
 \end{frame}
 
-
-
 \begin{frame}
 \frametitle{Counting Techniques}
-Approaches that need SAT counting:
-\begin{itemize}
-	\item WMC Reduction
-	\item Bit-Adder\\[2ex]
-\end{itemize}
-
-Different SAT counting tools tried:
-\begin{itemize}
-\item Exact
+	Approaches that need SAT counting:
 	\begin{itemize}
-	\item SharpSAT*
+		\item WMC Reduction
+		\item Bit-Adder\\[2ex]
 	\end{itemize}
 
-\item Approximate
+	Different SAT counting tools tried:
 	\begin{itemize}
-	\item Cryptominsat
-	\item ApproxMC\\[3ex]
+	\item Exact
+		\begin{itemize}
+		\item SharpSAT\footnote{https://sites.google.com/site/marcthurley/sharpsat}*
+		\end{itemize}
+
+	\item Approximate
+		\begin{itemize}
+		\item Cryptominsat\footnote{https://github.com/msoos/cryptominisat}
+		\item ApproxMC\footnote{https://www.cs.rice.edu/CS/Verification/Projects/ApproxMC/Paper.pdf}\\[3ex]
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-*Gave the best results
+	*Gave the best results
 \end{frame}
 
 \begin{frame}
@@ -359,11 +394,12 @@ Different SAT counting tools tried:
 		\end{itemize}
 	\item Improving Priority Schemes
 		\begin{itemize}
-		\item We are trying to find ways to iteratively improve priority schemes.
+		\item Try to find ways to iteratively improve priority schemes
+		\item Compare conditional probabilities of messages arriving on time
 		\end{itemize}
 	\item Finding Complexity Bounds
 		\begin{itemize}
-		\item We are also trying to find complexity bounds on this problem.
+		\item Prove complexity bounds for this problem
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -371,6 +407,8 @@ Different SAT counting tools tried:
 
 \begin{frame}
 \frametitle{Thank You}
+% Questions?
+% \Large{Questions?}
 \end{frame}
 
 \end{document} 
