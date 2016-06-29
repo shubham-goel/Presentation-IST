@@ -1,0 +1,5049 @@
+
+ 1210 
+./togmus ../umc_dimacs6_6_15_6_0_6_0.txt ../mis.out.gcnf false 0
+
+
+
+PARAMETERS:
+
+custom	False
+load	False
+save	True
+optimize	True
+showProgress	False
+weight	True
+diff	False
+countFaults	False
+probabalistic	True
+n	6
+m	6
+e	15
+t	6
+l	6
+k	0
+
+
+
+generating setting... 1466665959.29 0.00720191001892
+Nodes of graph: 
+[0, 1, 2, 3, 4, 5]
+Edges of graph: 
+[(0, 1), (0, 5), (1, 0), (1, 2), (1, 4), (1, 5), (2, 0), (2, 4), (2, 5), (3, 1), (3, 5), (4, 0), (4, 2), (4, 3), (5, 4)]
+
+
+edge 0 (0-1)
+edge 1 (0-5)
+edge 2 (1-0)
+edge 3 (1-2)
+edge 4 (1-4)
+edge 5 (1-5)
+edge 6 (2-0)
+edge 7 (2-4)
+edge 8 (2-5)
+edge 9 (3-1)
+edge 10 (3-5)
+edge 11 (4-0)
+edge 12 (4-2)
+edge 13 (4-3)
+edge 14 (5-4)
+
+
+0 2 --> 3
+2, 4, 3
+2 --> None, 3 --> None, 4 --> None
+################
+1 1 --> 4
+1, 4
+1 --> 5, 4 --> None, 5 --> 4
+################
+2 3 --> 0
+3, 1, 0
+0 --> None, 1 --> 2, 2 --> 0, 3 --> 5, 4 --> 0, 5 --> 4
+################
+3 4 --> 0
+4, 0
+0 --> None, 2 --> 0, 4 --> 2
+################
+4 1 --> 4
+1, 4
+1 --> 2, 2 --> 4, 4 --> None
+################
+5 4 --> 1
+4, 3, 1
+0 --> 1, 1 --> None, 3 --> 5, 4 --> 0, 5 --> 4
+################
+max length =  2 min length =  1
+
+
+Message 0 :: 2-->3
+------------
+
+	vertex : 2
+		Edge (2-4)
+	vertex : 3
+	vertex : 4
+		Edge (4-3)
+Message 1 :: 1-->4
+------------
+
+	vertex : 1
+		Edge (1-4)
+		Edge (1-5)
+	vertex : 4
+	vertex : 5
+		Edge (5-4)
+Message 2 :: 3-->0
+------------
+
+	vertex : 0
+	vertex : 1
+		Edge (1-0)
+		Edge (1-2)
+	vertex : 2
+		Edge (2-0)
+	vertex : 3
+		Edge (3-1)
+		Edge (3-5)
+	vertex : 4
+		Edge (4-0)
+	vertex : 5
+		Edge (5-4)
+Message 3 :: 4-->0
+------------
+
+	vertex : 0
+	vertex : 2
+		Edge (2-0)
+	vertex : 4
+		Edge (4-0)
+		Edge (4-2)
+Message 4 :: 1-->4
+------------
+
+	vertex : 1
+		Edge (1-4)
+		Edge (1-2)
+	vertex : 2
+		Edge (2-4)
+	vertex : 4
+Message 5 :: 4-->1
+------------
+
+	vertex : 0
+		Edge (0-1)
+	vertex : 1
+	vertex : 3
+		Edge (3-1)
+		Edge (3-5)
+	vertex : 4
+		Edge (4-3)
+		Edge (4-0)
+	vertex : 5
+		Edge (5-4)
+Starting Cegar loop... 1466665959.55 0.251322031021
+
+###############################################
+###############################################
+RUNNING CEGAR... 1466665959.55 8.10623168945e-06
+
+defining priority vars... 1466665959.55 0.00475978851318
+defining simulation vars... 1466665959.55 0.00471806526184
+adding priority constraints... 1466665959.57 0.016499042511
+solving z3 program... 1466665959.67 0.0949909687042
+generating priorities... 1466665959.67 0.00505805015564
+
+MESSAGE PRIORITIES
+------------------
+Vertex : 0
+	Message 2
+	Message 5
+	Message 3
+Vertex : 1
+	Message 5
+	Message 2
+	Message 4
+	Message 1
+Vertex : 2
+	Message 0
+	Message 2
+	Message 3
+	Message 4
+Vertex : 3
+	Message 5
+	Message 0
+	Message 2
+Vertex : 4
+	Message 2
+	Message 5
+	Message 4
+	Message 0
+	Message 3
+	Message 1
+Vertex : 5
+	Message 2
+	Message 5
+	Message 1
+
+Calculating Probabilities now... 1466665959.69 0.0170269012451
+
+###############################################
+###############################################
+RUNNING successProb... 1466665959.69 1.09672546387e-05
+
+optimize=True
+naive=False
+p_omissions=0.015625
+p_crashes=0.015625
+
+Adding constraints... 1466665959.69
+STARTING successProb Iterations 1466665960.26 0.573143005371
+Time taken = 0
+Probability lies in (0,1)
+Uncertainity = 1
+Do you want to continue with k=0
+----------------------k_crashes = 0 -----------------------
+Adding k_maxSimulationConstraints... 1466665960.26
+
+----------k,fail_at = 0,0------------
+Adding immediatefailureConstraints... 1466665960.29
+z3 to cnf... 1466665960.29 0.0282461643219
+cnf to dimacs... 1466665960.34 0.0463130474091
+saving dimacs to file... 1466665962.32 1.98774981499
+
+num_vars = 1210
+num_clauses = 4506
+
+
+running sharpSAT on file... 1466665962.33 0.00346803665161
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_0_6_0.txt > umc_dimacs6_6_15_6_0_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665962.37 0.0424921512604
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_0_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_0_6_0.txt 
+ 1340 
+./togmus ../umc_dimacs6_6_15_6_1_6_0.txt ../mis.out.gcnf false 0
+
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_1_6_1.txt ../mis.out.gcnf false 0
+>> mis.out && mv mis.out umc_dimacs6_6_15_6_0_6_0.txt.ind')
+running approxMC on file... 1466665962.44 0.0707628726959
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_0_6_0.txt.ind > umc_dimacs6_6_15_6_0_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665962.48 0.0415279865265
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_0_6_0.txt > umc_dimacs6_6_15_6_0_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002085
+approxMC_time 0.0418441295624
+mis_time 0.0657389163971
+approxMC_mis_time 0.0414779186249
+mis+approxMC time 0.107216835022
+
+lb=0.0, ub=0.0
+p2=0.242354892989
+(0.24235489298882976, 1.0)
+Time taken = 2.2624900341
+Probability lies in (0.242354892989,1.0)
+Uncertainity = 0.757645107011
+Do you want to continue with k=1
+----------------------k_crashes = 1 -----------------------
+Adding k_maxSimulationConstraints... 1466665962.52
+
+----------k,fail_at = 1,0------------
+Adding immediatefailureConstraints... 1466665962.56
+z3 to cnf... 1466665962.56 0.0790109634399
+cnf to dimacs... 1466665962.61 0.0469081401825
+saving dimacs to file... 1466665964.81 2.20005297661
+
+num_vars = 1340
+num_clauses = 4874
+
+
+running sharpSAT on file... 1466665964.81 0.0037989616394
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_1_6_0.txt > umc_dimacs6_6_15_6_1_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665964.96 0.149154901505
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_1_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_1_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_1_6_0.txt.ind')
+running approxMC on file... 1466665965.32 0.355547189713
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_0.txt.ind > umc_dimacs6_6_15_6_1_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+4 x 2^0
+
+running approxMC on file... 1466665965.37 0.0502488613129
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_0.txt > umc_dimacs6_6_15_6_1_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+4 x 2^0
+
+numSols_sharpSAT 4
+numSols_approxMC 4
+numSols_approxMC_mis 4
+sharpSAT_time 0.071081
+approxMC_time 0.0502650737762
+mis_time 0.349632978439
+approxMC_mis_time 0.050183057785
+mis+approxMC time 0.399816036224
+
+lb=0.0166482411035, ub=0.0166482411035
+p2=0.0624309041382
+(0.2881375560235408, 0.9833517588964688)
+
+----------k,fail_at = 1,1------------
+Adding immediatefailureConstraints... 1466665965.42
+z3 to cnf... 1466665965.42 0.054013967514
+cnf to dimacs... 1466665965.47 0.047070980072
+saving dimacs to file... 1466665967.68 2.20984697342
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665967.68 0.00381708145142
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_1_6_1.txt > umc_dimacs6_6_15_6_1_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665967.78 0.0982990264893
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_1_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_1_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_1_6_1.txt.ind')
+running approxMC on file... 1466665967.98 0.204216003418
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_1.txt.ind > umc_dimacs6_6_15_6_1_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+3 x 2^0
+
+running approxMC on file... 1
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_1_6_2.txt ../mis.out.gcnf false 0
+
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_1_6_3.txt ../mis.out.gcnf false 0
+466665968.03 0.05064702034
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_1.txt > umc_dimacs6_6_15_6_1_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+3 x 2^0
+
+numSols_sharpSAT 3
+numSols_approxMC 3
+numSols_approxMC_mis 3
+sharpSAT_time 0.038932
+approxMC_time 0.0507550239563
+mis_time 0.198854923248
+approxMC_mis_time 0.0505819320679
+mis+approxMC time 0.249436855316
+
+lb=0.0122910842522, ub=0.0122910842522
+p2=0.0614554212611
+(0.33730189303240665, 0.9710606746442523)
+
+----------k,fail_at = 1,2------------
+Adding immediatefailureConstraints... 1466665968.09
+z3 to cnf... 1466665968.09 0.0545039176941
+cnf to dimacs... 1466665968.14 0.0472841262817
+saving dimacs to file... 1466665970.35 2.21789598465
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665970.36 0.00402784347534
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_1_6_2.txt > umc_dimacs6_6_15_6_1_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665970.4 0.0418531894684
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_1_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_1_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_1_6_2.txt.ind')
+running approxMC on file... 1466665970.51 0.110816001892
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_2.txt.ind > umc_dimacs6_6_15_6_1_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665970.56 0.0500648021698
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_2.txt > umc_dimacs6_6_15_6_1_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002403
+approxMC_time 0.050201177597
+mis_time 0.105288028717
+approxMC_mis_time 0.050008058548
+mis+approxMC time 0.155296087265
+
+lb=0.0, ub=0.0
+p2=0.0604951803039
+(0.39779707333628456, 0.9710606746442523)
+
+----------k,fail_at = 1,3------------
+Adding immediatefailureConstraints... 1466665970.61
+z3 to cnf... 1466665970.62 0.0541360378265
+cnf to dimacs... 1466665970.66 0.047767162323
+saving dimacs to file... 1466665972.88 2.21438002586
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665972.88 0.00381994247437
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_1_6_3.txt > umc_dimacs6_6_15_6_1_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665972.92 0.0421719551086
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_1_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_1_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_1_6_3.txt.ind')
+running approxMC on file... 1466665973.03 0.104007005692
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_3.txt.ind > umc_dimacs6_6_15_6_1_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665973.08 0.050577878952
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_3.txt > umc_dimacs6_6_15_6_1_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002376
+approxMC_time 0.0510928630829
+mis_time 0.0982480049133
+approxMC_mis_time 0.0505180358887
+mis+approxMC time 0.148766040802
+
+lb=0.0, ub=0.0
+p2=0.0595499431116
+(0.45734701644791437, 0.9710606746442523)
+
+----------k,fail_at = 1,4------------
+Adding immediatefailureConstraints... 146666597
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_1_6_4.txt ../mis.out.gcnf false 0
+
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_1_6_5.txt ../mis.out.gcnf false 0
+3.13
+z3 to cnf... 1466665973.13 0.0548582077026
+cnf to dimacs... 1466665973.18 0.0481719970703
+saving dimacs to file... 1466665975.4 2.21443891525
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665975.4 0.00392007827759
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_1_6_4.txt > umc_dimacs6_6_15_6_1_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665975.44 0.0421359539032
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_1_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_1_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_1_6_4.txt.ind')
+running approxMC on file... 1466665975.55 0.104034900665
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_4.txt.ind > umc_dimacs6_6_15_6_1_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665975.6 0.0498330593109
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_4.txt > umc_dimacs6_6_15_6_1_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002533
+approxMC_time 0.0508170127869
+mis_time 0.0988059043884
+approxMC_mis_time 0.0497810840607
+mis+approxMC time 0.148586988449
+
+lb=0.0, ub=0.0
+p2=0.0586194752505
+(0.515966491698425, 0.9710606746442523)
+
+----------k,fail_at = 1,5------------
+Adding immediatefailureConstraints... 1466665975.65
+z3 to cnf... 1466665975.65 0.0545330047607
+cnf to dimacs... 1466665975.7 0.0474998950958
+saving dimacs to file... 1466665977.91 2.21416711807
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665977.92 0.00425291061401
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_1_6_5.txt > umc_dimacs6_6_15_6_1_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665977.96 0.0425860881805
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_1_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_1_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_1_6_5.txt.ind')
+running approxMC on file... 1466665978.06 0.103904008865
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_5.txt.ind > umc_dimacs6_6_15_6_1_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665978.11 0.0506620407104
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_1_6_5.txt > umc_dimacs6_6_15_6_1_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002482
+approxMC_time 0.0506010055542
+mis_time 0.0983839035034
+approxMC_mis_time 0.0505840778351
+mis+approxMC time 0.148967981339
+
+lb=0.0, ub=0.0
+p2=0.0577035459497
+(0.5736700376481464, 0.9710606746442523)
+Time taken = 15.6395659447
+Probability lies in (0.573670037648,0.971060674644)
+Uncertainity = 0.397390636996
+Do you want to continue with k=2
+----------------------k_crashes = 2 -----------------------
+Adding k_maxSimulationConstraints... 1466665978.16
+
+----------k,fail_at = 2,0------------
+Adding immediatefailureConstraints... 1466665978.2
+z3 to cnf... 1466665978.2 0.0872988700867
+cnf to dimacs... 1466665978.25 0.0468549728394
+saving dimacs to file... 1466665980.45 2.19913506508
+
+num_vars = 1340
+num_clauses = 4874
+
+
+running sharpSAT on file... 1466665980.45 0.00371503829956
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_2_6_0.txt > umc_dimacs6_6_15_6_2_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_st
+ 1340 
+./togmus ../umc_dimacs6_6_15_6_2_6_0.txt ../mis.out.gcnf false 0
+
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_2_6_1.txt ../mis.out.gcnf false 0
+
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_2_6_2.txt ../mis.out.gcnf false 0
+atus.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665980.52 0.0665800571442
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_2_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_2_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_2_6_0.txt.ind')
+running approxMC on file... 1466665985.18 4.66223788261
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_0.txt.ind > umc_dimacs6_6_15_6_2_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+29 x 2^1
+
+running approxMC on file... 1466665985.53 0.348508119583
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_0.txt > umc_dimacs6_6_15_6_2_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+28 x 2^1
+
+numSols_sharpSAT 55
+numSols_approxMC 56
+numSols_approxMC_mis 58
+sharpSAT_time 0.021346
+approxMC_time 2.25228190422
+mis_time 4.6570019722
+approxMC_mis_time 0.348435163498
+mis+approxMC time 5.0054371357
+
+lb=0.00393122253054, ub=0.00393122253054
+p2=0.00750506119467
+(0.5772438763122745, 0.9671294521137115)
+
+----------k,fail_at = 2,1------------
+Adding immediatefailureConstraints... 1466665987.78
+z3 to cnf... 1466665987.78 2.25661587715
+cnf to dimacs... 1466665987.83 0.0475759506226
+saving dimacs to file... 1466665990.04 2.21299004555
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665990.05 0.00394916534424
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_2_6_1.txt > umc_dimacs6_6_15_6_2_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665990.1 0.050773859024
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_2_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_2_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_2_6_1.txt.ind')
+running approxMC on file... 1466665991.46 1.35672807693
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_1.txt.ind > umc_dimacs6_6_15_6_2_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+41 x 2^0
+
+running approxMC on file... 1466665991.52 0.0669040679932
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_1.txt > umc_dimacs6_6_15_6_2_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+41 x 2^0
+
+numSols_sharpSAT 41
+numSols_approxMC 41
+numSols_approxMC_mis 41
+sharpSAT_time 0.010904
+approxMC_time 0.0676801204681
+mis_time 1.35048007965
+approxMC_mis_time 0.0668380260468
+mis+approxMC time 1.4173181057
+
+lb=0.00283968355456, ub=0.00283968355456
+p2=0.00727236032267
+(0.5816765530803758, 0.9642897685591466)
+
+----------k,fail_at = 2,2------------
+Adding immediatefailureConstraints... 1466665991.59
+z3 to cnf... 1466665991.59 0.0715789794922
+cnf to dimacs... 1466665991.64 0.0470769405365
+saving dimacs to file... 1466665993.83 2.19110298157
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665993.84 0.00390386581421
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_2_6_2.txt > umc_dimacs6_6_15_6_2_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665993.88 0.0426070690155
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_2_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_2_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_2_6_2.txt.ind')
+running approxMC on file... 1466665993.98 0.104841947556
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_2.txt.ind > umc_dimacs6_6_15_6_2_6_2.txt.ind.sol.approx')
+('c
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_2_6_3.txt ../mis.out.gcnf false 0
+
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_2_6_4.txt ../mis.out.gcnf false 0
+md >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665994.03 0.0504941940308
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_2.txt > umc_dimacs6_6_15_6_2_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.00243
+approxMC_time 0.0511639118195
+mis_time 0.0990090370178
+approxMC_mis_time 0.0504419803619
+mis+approxMC time 0.14945101738
+
+lb=0.0, ub=0.0
+p2=0.00704687454118
+(0.588723427621553, 0.9642897685591466)
+
+----------k,fail_at = 2,3------------
+Adding immediatefailureConstraints... 1466665994.09
+z3 to cnf... 1466665994.09 0.0548520088196
+cnf to dimacs... 1466665994.14 0.0466380119324
+saving dimacs to file... 1466665996.32 2.18472599983
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665996.32 0.00399589538574
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_2_6_3.txt > umc_dimacs6_6_15_6_2_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665996.37 0.0431170463562
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_2_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_2_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_2_6_3.txt.ind')
+running approxMC on file... 1466665996.47 0.105399847031
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_3.txt.ind > umc_dimacs6_6_15_6_2_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665996.53 0.0524110794067
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_3.txt > umc_dimacs6_6_15_6_2_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002473
+approxMC_time 0.0509049892426
+mis_time 0.0990967750549
+approxMC_mis_time 0.0523598194122
+mis+approxMC time 0.151456594467
+
+lb=0.0, ub=0.0
+p2=0.00682838014012
+(0.5955518077616733, 0.9642897685591466)
+
+----------k,fail_at = 2,4------------
+Adding immediatefailureConstraints... 1466665996.58
+z3 to cnf... 1466665996.58 0.0545930862427
+cnf to dimacs... 1466665996.63 0.0468118190765
+saving dimacs to file... 1466665998.84 2.21423602104
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466665998.85 0.00396513938904
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_2_6_4.txt > umc_dimacs6_6_15_6_2_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466665998.89 0.0431389808655
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_2_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_2_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_2_6_4.txt.ind')
+running approxMC on file... 1466665998.99 0.105661869049
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_4.txt.ind > umc_dimacs6_6_15_6_2_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466665999.05 0.0516531467438
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_4.txt > umc_dimacs6_6_15_6_2_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002433
+approxMC_time 0.0511150360107
+mis_time 0.0995149612427
+approxMC_mis_time 0.0516049861908
+mis+approxMC time 0.151119947433
+
+lb=0.0, ub=0.0
+p2=0.00661666034574
+(0.
+ 1355 
+./togmus ../umc_dimacs6_6_15_6_2_6_5.txt ../mis.out.gcnf false 0
+
+ 1397 
+./togmus ../umc_dimacs6_6_15_6_3_6_0.txt ../mis.out.gcnf false 0
+6021684681074099, 0.9642897685591466)
+
+----------k,fail_at = 2,5------------
+Adding immediatefailureConstraints... 1466665999.1
+z3 to cnf... 1466665999.1 0.0548689365387
+cnf to dimacs... 1466665999.15 0.0471119880676
+saving dimacs to file... 1466666001.33 2.18401503563
+
+num_vars = 1355
+num_clauses = 4919
+
+
+running sharpSAT on file... 1466666001.34 0.00406694412231
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_2_6_5.txt > umc_dimacs6_6_15_6_2_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666001.38 0.0446360111237
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_2_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_2_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_2_6_5.txt.ind')
+running approxMC on file... 1466666001.49 0.107365131378
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_5.txt.ind > umc_dimacs6_6_15_6_2_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666001.54 0.0555830001831
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_2_6_5.txt > umc_dimacs6_6_15_6_2_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002596
+approxMC_time 0.051629781723
+mis_time 0.100445985794
+approxMC_mis_time 0.0555291175842
+mis+approxMC time 0.155975103378
+
+lb=0.0, ub=0.0
+p2=0.00641150510552
+(0.6085799732129344, 0.9642897685591466)
+Time taken = 23.4311270714
+Probability lies in (0.608579973213,0.964289768559)
+Uncertainity = 0.355709795346
+Do you want to continue with k=3
+----------------------k_crashes = 3 -----------------------
+Adding k_maxSimulationConstraints... 1466666001.6
+
+----------k,fail_at = 3,0------------
+Adding immediatefailureConstraints... 1466666001.63
+z3 to cnf... 1466666001.64 0.0942349433899
+cnf to dimacs... 1466666001.68 0.0464239120483
+saving dimacs to file... 1466666004.0 2.31560993195
+
+num_vars = 1397
+num_clauses = 5129
+
+
+running sharpSAT on file... 1466666004.0 0.00417613983154
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_3_6_0.txt > umc_dimacs6_6_15_6_3_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666004.15 0.150500059128
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_3_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_3_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_3_6_0.txt.ind')
+running approxMC on file... 1466666013.93 9.7780148983
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_0.txt.ind > umc_dimacs6_6_15_6_3_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+38 x 2^3
+
+running approxMC on file... 1466666014.44 0.502999067307
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_0.txt > umc_dimacs6_6_15_6_3_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+42 x 2^3
+
+numSols_sharpSAT 330
+numSols_approxMC 336
+numSols_approxMC_mis 304
+sharpSAT_time 0.07841
+approxMC_time 5.90960884094
+mis_time 9.77002096176
+approxMC_mis_time 0.502932786942
+mis+approxMC time 10.2729537487
+
+lb=0.000405075010326, ub=0.000405075010326
+p2=0.000558512514238
+(0.608733410716846, 0.9638846935488201)
+
+----------k,fail_at = 3,1------------
+Adding immediatefailureConstraints... 1466666020.34
+z3 to cnf... 1466666020.35 5.91339802742
+cnf to dimacs... 1466666020.4 0.0465958118439
+saving dimacs to file... 1466666022.72 2.3256649971
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666022.72 0.004
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_3_6_1.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_3_6_2.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_3_6_3.txt ../mis.out.gcnf false 0
+03809547424
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_3_6_1.txt > umc_dimacs6_6_15_6_3_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666022.83 0.101150035858
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_3_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_3_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_3_6_1.txt.ind')
+running approxMC on file... 1466666026.24 3.41392588615
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_1.txt.ind > umc_dimacs6_6_15_6_3_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+66 x 2^2
+
+running approxMC on file... 1466666026.64 0.402390003204
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_1.txt > umc_dimacs6_6_15_6_3_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+34 x 2^3
+
+numSols_sharpSAT 254
+numSols_approxMC 272
+numSols_approxMC_mis 264
+sharpSAT_time 0.037144
+approxMC_time 3.15687203407
+mis_time 3.40577888489
+approxMC_mis_time 0.40230512619
+mis+approxMC time 3.80808401108
+
+lb=0.000297397254495, ub=0.000297397254495
+p2=0.00053273917636
+(0.6089687526387104, 0.9635872962943247)
+
+----------k,fail_at = 3,2------------
+Adding immediatefailureConstraints... 1466666029.8
+z3 to cnf... 1466666029.8 3.1612830162
+cnf to dimacs... 1466666029.85 0.0468740463257
+saving dimacs to file... 1466666032.17 2.31791114807
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666032.17 0.00421380996704
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_3_6_2.txt > umc_dimacs6_6_15_6_3_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666032.22 0.0447430610657
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_3_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_3_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_3_6_2.txt.ind')
+running approxMC on file... 1466666032.33 0.109025001526
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_2.txt.ind > umc_dimacs6_6_15_6_3_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666032.38 0.0534749031067
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_2.txt > umc_dimacs6_6_15_6_3_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002655
+approxMC_time 0.0531251430511
+mis_time 0.101319074631
+approxMC_mis_time 0.0534319877625
+mis+approxMC time 0.154751062393
+
+lb=0.0, ub=0.0
+p2=0.000508155185056
+(0.6094769078237662, 0.9635872962943247)
+
+----------k,fail_at = 3,3------------
+Adding immediatefailureConstraints... 1466666032.43
+z3 to cnf... 1466666032.44 0.057097196579
+cnf to dimacs... 1466666032.48 0.0478818416595
+saving dimacs to file... 1466666034.82 2.34006500244
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666034.83 0.00426912307739
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_3_6_3.txt > umc_dimacs6_6_15_6_3_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666034.87 0.0451970100403
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_3_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_3_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_3_6_3.txt.ind')
+running approxMC on file... 1466666034.
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_3_6_4.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_3_6_5.txt ../mis.out.gcnf false 0
+98 0.108402967453
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_3.txt.ind > umc_dimacs6_6_15_6_3_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666035.04 0.0528810024261
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_3.txt > umc_dimacs6_6_15_6_3_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.00278
+approxMC_time 0.0518450737
+mis_time 0.100925922394
+approxMC_mis_time 0.0528151988983
+mis+approxMC time 0.153741121292
+
+lb=0.0, ub=0.0
+p2=0.000484705656271
+(0.6099616134800376, 0.9635872962943247)
+
+----------k,fail_at = 3,4------------
+Adding immediatefailureConstraints... 1466666035.09
+z3 to cnf... 1466666035.09 0.0556139945984
+cnf to dimacs... 1466666035.14 0.0466969013214
+saving dimacs to file... 1466666037.48 2.34194016457
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666037.48 0.00435590744019
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_3_6_4.txt > umc_dimacs6_6_15_6_3_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666037.53 0.0440919399261
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_3_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_3_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_3_6_4.txt.ind')
+running approxMC on file... 1466666037.64 0.11443901062
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_4.txt.ind > umc_dimacs6_6_15_6_3_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666037.7 0.0523250102997
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_4.txt > umc_dimacs6_6_15_6_3_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.00268
+approxMC_time 0.0532078742981
+mis_time 0.106403112411
+approxMC_mis_time 0.0522799491882
+mis+approxMC time 0.1586830616
+
+lb=0.0, ub=0.0
+p2=0.000462338238654
+(0.6104239517186916, 0.9635872962943247)
+
+----------k,fail_at = 3,5------------
+Adding immediatefailureConstraints... 1466666037.75
+z3 to cnf... 1466666037.75 0.0569701194763
+cnf to dimacs... 1466666037.8 0.0478279590607
+saving dimacs to file... 1466666040.12 2.31995797157
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666040.12 0.00431108474731
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_3_6_5.txt > umc_dimacs6_6_15_6_3_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666040.17 0.0456418991089
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_3_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_3_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_3_6_5.txt.ind')
+running approxMC on file... 1466666040.28 0.108994960785
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_5.txt.ind > umc_dimacs6_6_15_6_3_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666040.33 0.0557179450989
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_3_6_5.txt > umc_dimacs6_6_15_6_3_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002559
+approxMC_time 0.0544130802155
+mis_time 0.101
+ 1397 
+./togmus ../umc_dimacs6_6_15_6_4_6_0.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_4_6_1.txt ../mis.out.gcnf false 0
+135969162
+approxMC_mis_time 0.0556719303131
+mis+approxMC time 0.156807899475
+
+lb=0.0, ub=0.0
+p2=0.000441002996676
+(0.6108649547153678, 0.9635872962943247)
+Time taken = 38.7938971519
+Probability lies in (0.610864954715,0.963587296294)
+Uncertainity = 0.352722341579
+Do you want to continue with k=4
+----------------------k_crashes = 4 -----------------------
+Adding k_maxSimulationConstraints... 1466666040.39
+
+----------k,fail_at = 4,0------------
+Adding immediatefailureConstraints... 1466666040.43
+z3 to cnf... 1466666040.43 0.0970010757446
+cnf to dimacs... 1466666040.48 0.0459110736847
+saving dimacs to file... 1466666042.77 2.29395389557
+
+num_vars = 1397
+num_clauses = 5129
+
+
+running sharpSAT on file... 1466666042.78 0.00405812263489
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_4_6_0.txt > umc_dimacs6_6_15_6_4_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666042.93 0.151125907898
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_4_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_4_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_4_6_0.txt.ind')
+running approxMC on file... 1466666055.96 13.0346939564
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_0.txt.ind > umc_dimacs6_6_15_6_4_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+40 x 2^5
+
+running approxMC on file... 1466666056.61 0.651883125305
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_0.txt > umc_dimacs6_6_15_6_4_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+42 x 2^5
+
+numSols_sharpSAT 1173
+numSols_approxMC 1344
+numSols_approxMC_mis 1280
+sharpSAT_time 0.095176
+approxMC_time 8.71715593338
+mis_time 13.026569128
+approxMC_mis_time 0.651818990707
+mis+approxMC time 13.6783881187
+
+lb=2.47272657983e-05, ub=2.47272657983e-05
+p2=2.87746954942e-05
+(0.6108690021450637, 0.9635625690285264)
+
+----------k,fail_at = 4,1------------
+Adding immediatefailureConstraints... 1466666065.33
+z3 to cnf... 1466666065.33 8.72129201889
+cnf to dimacs... 1466666065.38 0.04705286026
+saving dimacs to file... 1466666067.69 2.3037481308
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666067.69 0.004145860672
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_4_6_1.txt > umc_dimacs6_6_15_6_4_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666067.79 0.100443124771
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_4_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_4_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_4_6_1.txt.ind')
+running approxMC on file... 1466666071.51 3.71786785126
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_1.txt.ind > umc_dimacs6_6_15_6_4_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+60 x 2^4
+
+running approxMC on file... 1466666072.06 0.551348209381
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_1.txt > umc_dimacs6_6_15_6_4_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+64 x 2^4
+
+numSols_sharpSAT 951
+numSols_approxMC 1024
+numSols_approxMC_mis 960
+sharpSAT_time 0.031369
+approxMC_time 5.91094017029
+mis_time 3.71011281013
+approxMC_mis_time 0.551280021667
+mis+approxMC time 4.2613928318
+
+lb=1.88235227777e-05, ub=1.88235227777e-05
+p2=2.70179901068e-05
+(0.6108771966123927, 0.9635437455057487)
+
+----------k,fail_at = 4,2------------
+Adding immediatefailureConstraints... 1466666077.97
+z3 to cnf... 1466666077.97 5.91526699066
+cnf to dimacs... 
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_4_6_2.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_4_6_3.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_4_6_4.txt ../mis.out.gcnf false 0
+1466666078.02 0.046847820282
+saving dimacs to file... 1466666080.33 2.30954003334
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666080.33 0.00413107872009
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_4_6_2.txt > umc_dimacs6_6_15_6_4_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666080.38 0.0446040630341
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_4_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_4_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_4_6_2.txt.ind')
+running approxMC on file... 1466666080.49 0.109063863754
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_2.txt.ind > umc_dimacs6_6_15_6_4_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666080.55 0.0581290721893
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_2.txt > umc_dimacs6_6_15_6_4_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002651
+approxMC_time 0.0529329776764
+mis_time 0.101166963577
+approxMC_mis_time 0.0580830574036
+mis+approxMC time 0.159250020981
+
+lb=0.0, ub=0.0
+p2=2.53685322076e-05
+(0.6109025651446003, 0.9635437455057487)
+
+----------k,fail_at = 4,3------------
+Adding immediatefailureConstraints... 1466666080.6
+z3 to cnf... 1466666080.6 0.056813955307
+cnf to dimacs... 1466666080.65 0.0467510223389
+saving dimacs to file... 1466666082.96 2.31289100647
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666082.97 0.00414490699768
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_4_6_3.txt > umc_dimacs6_6_15_6_4_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666083.01 0.0442249774933
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_4_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_4_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_4_6_3.txt.ind')
+running approxMC on file... 1466666083.13 0.115316152573
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_3.txt.ind > umc_dimacs6_6_15_6_4_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666083.18 0.0521638393402
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_3.txt > umc_dimacs6_6_15_6_4_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002738
+approxMC_time 0.0517740249634
+mis_time 0.107436180115
+approxMC_mis_time 0.0521190166473
+mis+approxMC time 0.159555196762
+
+lb=0.0, ub=0.0
+p2=2.38197742995e-05
+(0.6109263849188997, 0.9635437455057487)
+
+----------k,fail_at = 4,4------------
+Adding immediatefailureConstraints... 1466666083.23
+z3 to cnf... 1466666083.23 0.0553691387177
+cnf to dimacs... 1466666083.28 0.0464749336243
+saving dimacs to file... 1466666085.59 2.30753707886
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666085.59 0.00415587425232
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_4_6_4.txt > umc_dimacs6_6_15_6_4_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666085.64 0.0442700386047
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_4_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat 
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_4_6_5.txt ../mis.out.gcnf false 0
+
+ 1397 
+./togmus ../umc_dimacs6_6_15_6_5_6_0.txt ../mis.out.gcnf false 0
+umc_dimacs6_6_15_6_4_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_4_6_4.txt.ind')
+running approxMC on file... 1466666085.75 0.108685970306
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_4.txt.ind > umc_dimacs6_6_15_6_4_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666085.8 0.052267074585
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_4.txt > umc_dimacs6_6_15_6_4_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002728
+approxMC_time 0.0532150268555
+mis_time 0.101139068604
+approxMC_mis_time 0.0522229671478
+mis+approxMC time 0.153362035751
+
+lb=0.0, ub=0.0
+p2=2.23655686121e-05
+(0.6109487504875118, 0.9635437455057487)
+
+----------k,fail_at = 4,5------------
+Adding immediatefailureConstraints... 1466666085.85
+z3 to cnf... 1466666085.85 0.0567760467529
+cnf to dimacs... 1466666085.9 0.0461678504944
+saving dimacs to file... 1466666088.2 2.30394005775
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666088.21 0.00411295890808
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_4_6_5.txt > umc_dimacs6_6_15_6_4_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666088.25 0.0444521903992
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_4_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_4_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_4_6_5.txt.ind')
+running approxMC on file... 1466666088.36 0.108861923218
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_5.txt.ind > umc_dimacs6_6_15_6_4_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666088.41 0.0517840385437
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_4_6_5.txt > umc_dimacs6_6_15_6_4_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002663
+approxMC_time 0.0533378124237
+mis_time 0.101001024246
+approxMC_mis_time 0.0517389774323
+mis+approxMC time 0.152740001678
+
+lb=0.0, ub=0.0
+p2=2.10001426989e-05
+(0.6109697506302108, 0.9635437455057487)
+Time taken = 48.0780529976
+Probability lies in (0.61096975063,0.963543745506)
+Uncertainity = 0.352573994876
+Do you want to continue with k=5
+----------------------k_crashes = 5 -----------------------
+Adding k_maxSimulationConstraints... 1466666088.47
+
+----------k,fail_at = 5,0------------
+Adding immediatefailureConstraints... 1466666088.51
+z3 to cnf... 1466666088.51 0.0958049297333
+cnf to dimacs... 1466666088.56 0.0465109348297
+saving dimacs to file... 1466666090.85 2.29353809357
+
+num_vars = 1397
+num_clauses = 5129
+
+
+running sharpSAT on file... 1466666090.85 0.00409603118896
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_5_6_0.txt > umc_dimacs6_6_15_6_5_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666091.1 0.251216888428
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_5_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_5_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_5_6_0.txt.ind')
+running approxMC on file... 1466666102.54 11.4311349392
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_0.txt.ind > umc_dimacs6_6_15_6_5_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+40 x 2^6
+
+running appro
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_5_6_1.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_5_6_2.txt ../mis.out.gcnf false 0
+xMC on file... 1466666103.19 0.650640010834
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_0.txt > umc_dimacs6_6_15_6_5_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+42 x 2^6
+
+numSols_sharpSAT 2813
+numSols_approxMC 2688
+numSols_approxMC_mis 2560
+sharpSAT_time 0.179772
+approxMC_time 9.1689581871
+mis_time 11.4234521389
+approxMC_mis_time 0.650575876236
+mis+approxMC time 12.0740280151
+
+lb=1.01836717068e-06, ub=1.01836717068e-06
+p2=1.08715130237e-06
+(0.6109698194143425, 0.963542727138578)
+
+----------k,fail_at = 5,1------------
+Adding immediatefailureConstraints... 1466666112.36
+z3 to cnf... 1466666112.36 9.17280316353
+cnf to dimacs... 1466666112.41 0.0462918281555
+saving dimacs to file... 1466666114.73 2.32613110542
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666114.74 0.00418210029602
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_5_6_1.txt > umc_dimacs6_6_15_6_5_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666114.84 0.101571798325
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_5_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_5_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_5_6_1.txt.ind')
+running approxMC on file... 1466666118.15 3.31568217278
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_1.txt.ind > umc_dimacs6_6_15_6_5_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+38 x 2^6
+
+running approxMC on file... 1466666118.75 0.600934028625
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_1.txt > umc_dimacs6_6_15_6_5_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+37 x 2^6
+
+numSols_sharpSAT 2415
+numSols_approxMC 2368
+numSols_approxMC_mis 2432
+sharpSAT_time 0.046867
+approxMC_time 5.10759115219
+mis_time 3.30804514885
+approxMC_mis_time 0.600866794586
+mis+approxMC time 3.90891194344
+
+lb=8.08080581644e-07, ub=8.08080581644e-07
+p2=1.0048306363e-06
+(0.6109700161643972, 0.9635419190579964)
+
+----------k,fail_at = 5,2------------
+Adding immediatefailureConstraints... 1466666123.86
+z3 to cnf... 1466666123.87 5.11127591133
+cnf to dimacs... 1466666123.91 0.0467939376831
+saving dimacs to file... 1466666126.22 2.31194114685
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666126.23 0.00423002243042
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_5_6_2.txt > umc_dimacs6_6_15_6_5_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666126.27 0.0440669059753
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_5_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_5_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_5_6_2.txt.ind')
+running approxMC on file... 1466666126.38 0.108752012253
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_2.txt.ind > umc_dimacs6_6_15_6_5_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666126.43 0.0524370670319
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_2.txt > umc_dimacs6_6_15_6_5_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002609
+approxMC_time 0.0526118278503
+mis_time 0.101209878922
+approxMC_mis_time 0.0523951053619
+mis+approxMC time 0.153604984283
+
+lb=0.0, ub=0.0
+p2=9.2874340992e-07
+(0.6109709449078071, 0.9635419190579964)
+
+----------k,f
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_5_6_3.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_5_6_4.txt ../mis.out.gcnf false 0
+ail_at = 5,3------------
+Adding immediatefailureConstraints... 1466666126.49
+z3 to cnf... 1466666126.49 0.0562808513641
+cnf to dimacs... 1466666126.54 0.0464761257172
+saving dimacs to file... 1466666128.85 2.31461286545
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666128.86 0.00413298606873
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_5_6_3.txt > umc_dimacs6_6_15_6_5_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666128.9 0.0444450378418
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_5_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_5_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_5_6_3.txt.ind')
+running approxMC on file... 1466666129.01 0.109122037888
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_3.txt.ind > umc_dimacs6_6_15_6_5_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666129.06 0.0515460968018
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_3.txt > umc_dimacs6_6_15_6_5_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002695
+approxMC_time 0.0526158809662
+mis_time 0.101696968079
+approxMC_mis_time 0.0515038967133
+mis+approxMC time 0.153200864792
+
+lb=0.0, ub=0.0
+p2=8.58417618158e-07
+(0.6109718033254253, 0.9635419190579964)
+
+----------k,fail_at = 5,4------------
+Adding immediatefailureConstraints... 1466666129.11
+z3 to cnf... 1466666129.12 0.0564458370209
+cnf to dimacs... 1466666129.16 0.0469701290131
+saving dimacs to file... 1466666131.47 2.30933904648
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666131.48 0.00414490699768
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_5_6_4.txt > umc_dimacs6_6_15_6_5_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666131.52 0.0443890094757
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_5_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_5_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_5_6_4.txt.ind')
+running approxMC on file... 1466666131.63 0.109397888184
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_4.txt.ind > umc_dimacs6_6_15_6_5_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666131.68 0.0528841018677
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_4.txt > umc_dimacs6_6_15_6_5_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002647
+approxMC_time 0.051815032959
+mis_time 0.101120948792
+approxMC_mis_time 0.0528390407562
+mis+approxMC time 0.153959989548
+
+lb=0.0, ub=0.0
+p2=7.93416996873e-07
+(0.6109725967424222, 0.9635419190579964)
+
+----------k,fail_at = 5,5------------
+Adding immediatefailureConstraints... 1466666131.74
+z3 to cnf... 1466666131.74 0.0553770065308
+cnf to dimacs... 1466666131.79 0.0473630428314
+saving dimacs to file... 1466666134.13 2.33905482292
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666134.13 0.00423502922058
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_5_6_5.txt > umc_dimacs6_6_15_6_5_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666134.17 0.0443570613861
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out .
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_5_6_5.txt ../mis.out.gcnf false 0
+
+ 1397 
+./togmus ../umc_dimacs6_6_15_6_6_6_0.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_6_6_1.txt ../mis.out.gcnf false 0
+./umc_dimacs6_6_15_6_5_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_5_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_5_6_5.txt.ind')
+running approxMC on file... 1466666134.28 0.108637094498
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_5.txt.ind > umc_dimacs6_6_15_6_5_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666134.34 0.0541818141937
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_5_6_5.txt > umc_dimacs6_6_15_6_5_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002741
+approxMC_time 0.0526840686798
+mis_time 0.101006984711
+approxMC_mis_time 0.0541310310364
+mis+approxMC time 0.155138015747
+
+lb=0.0, ub=0.0
+p2=7.33338316469e-07
+(0.6109733300807387, 0.9635419190579964)
+Time taken = 45.9226350784
+Probability lies in (0.610973330081,0.963541919058)
+Uncertainity = 0.352568588977
+Do you want to continue with k=6
+----------------------k_crashes = 6 -----------------------
+Adding k_maxSimulationConstraints... 1466666134.39
+
+----------k,fail_at = 6,0------------
+Adding immediatefailureConstraints... 1466666134.43
+z3 to cnf... 1466666134.43 0.095498085022
+cnf to dimacs... 1466666134.48 0.0462861061096
+saving dimacs to file... 1466666136.78 2.29738903046
+
+num_vars = 1397
+num_clauses = 5129
+
+
+running sharpSAT on file... 1466666136.78 0.00400185585022
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_6_6_0.txt > umc_dimacs6_6_15_6_6_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666137.08 0.300611019135
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_6_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_6_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_6_6_0.txt.ind')
+running approxMC on file... 1466666150.06 12.9797890186
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_0.txt.ind > umc_dimacs6_6_15_6_6_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+39 x 2^7
+
+running approxMC on file... 1466666150.76 0.701503038406
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_0.txt > umc_dimacs6_6_15_6_6_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+39 x 2^7
+
+numSols_sharpSAT 4883
+numSols_approxMC 4992
+numSols_approxMC_mis 4992
+sharpSAT_time 0.256855
+approxMC_time 15.7815239429
+mis_time 12.9718558788
+approxMC_mis_time 0.701384067535
+mis+approxMC time 13.6732399464
+
+lb=3.03583354689e-08, ub=3.03583354689e-08
+p2=3.11168275695e-08
+(0.6109733308392308, 0.9635418886996608)
+
+----------k,fail_at = 6,1------------
+Adding immediatefailureConstraints... 1466666166.54
+z3 to cnf... 1466666166.55 15.785670042
+cnf to dimacs... 1466666166.59 0.0467939376831
+saving dimacs to file... 1466666168.92 2.32036590576
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666168.92 0.00419998168945
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_6_6_1.txt > umc_dimacs6_6_15_6_6_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666169.07 0.150537014008
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_6_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_6_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_6_6_1.txt.ind')
+running approxMC on file... 1466666172.54 3.46645498276
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_1.txt.ind > umc_
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_6_6_2.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_6_6_3.txt ../mis.out.gcnf false 0
+dimacs6_6_15_6_6_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+35 x 2^7
+
+running approxMC on file... 1466666173.14 0.603248119354
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_1.txt > umc_dimacs6_6_15_6_6_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+36 x 2^7
+
+numSols_sharpSAT 4417
+numSols_approxMC 4608
+numSols_approxMC_mis 4480
+sharpSAT_time 0.069342
+approxMC_time 7.3640499115
+mis_time 3.45806694031
+approxMC_mis_time 0.603183031082
+mis+approxMC time 4.06124997139
+
+lb=2.49851570437e-08, ub=2.49851570437e-08
+p2=2.83112318324e-08
+(0.6109733341653055, 0.9635418637145038)
+
+----------k,fail_at = 6,2------------
+Adding immediatefailureConstraints... 1466666180.5
+z3 to cnf... 1466666180.51 7.36773395538
+cnf to dimacs... 1466666180.55 0.0470409393311
+saving dimacs to file... 1466666182.87 2.31645011902
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666182.87 0.00407791137695
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_6_6_2.txt > umc_dimacs6_6_15_6_6_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666182.92 0.0442659854889
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_6_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_6_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_6_6_2.txt.ind')
+running approxMC on file... 1466666183.03 0.108669996262
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_2.txt.ind > umc_dimacs6_6_15_6_6_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666183.08 0.0539660453796
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_2.txt > umc_dimacs6_6_15_6_6_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002551
+approxMC_time 0.0526080131531
+mis_time 0.101003170013
+approxMC_mis_time 0.0539200305939
+mis+approxMC time 0.154923200607
+
+lb=0.0, ub=0.0
+p2=2.57585978545e-08
+(0.6109733599239033, 0.9635418637145038)
+
+----------k,fail_at = 6,3------------
+Adding immediatefailureConstraints... 1466666183.13
+z3 to cnf... 1466666183.14 0.0561900138855
+cnf to dimacs... 1466666183.18 0.0464730262756
+saving dimacs to file... 1466666185.5 2.3172659874
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666185.51 0.00427103042603
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_6_6_3.txt > umc_dimacs6_6_15_6_6_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666185.55 0.0448439121246
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_6_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_6_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_6_6_3.txt.ind')
+running approxMC on file... 1466666185.67 0.115472078323
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_3.txt.ind > umc_dimacs6_6_15_6_6_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666185.72 0.052402973175
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_3.txt > umc_dimacs6_6_15_6_6_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002589
+approxMC_time 0.0526530742645
+mis_time 0.107939004898
+approxMC_mis_time
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_6_6_4.txt ../mis.out.gcnf false 0
+
+ 1412 
+./togmus ../umc_dimacs6_6_15_6_6_6_5.txt ../mis.out.gcnf false 0
+ 0.0523581504822
+mis+approxMC time 0.16029715538
+
+lb=0.0, ub=0.0
+p2=2.34361177697e-08
+(0.6109733833600212, 0.9635418637145038)
+
+----------k,fail_at = 6,4------------
+Adding immediatefailureConstraints... 1466666185.77
+z3 to cnf... 1466666185.77 0.0563158988953
+cnf to dimacs... 1466666185.82 0.0469601154327
+saving dimacs to file... 1466666188.13 2.31271886826
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666188.14 0.0041880607605
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_6_6_4.txt > umc_dimacs6_6_15_6_6_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666188.18 0.0441579818726
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_6_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_6_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_6_6_4.txt.ind')
+running approxMC on file... 1466666188.29 0.108792066574
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_4.txt.ind > umc_dimacs6_6_15_6_6_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666188.34 0.052962064743
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_4.txt > umc_dimacs6_6_15_6_6_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002683
+approxMC_time 0.0540928840637
+mis_time 0.100932121277
+approxMC_mis_time 0.0529158115387
+mis+approxMC time 0.153847932816
+
+lb=0.0, ub=0.0
+p2=2.13230401444e-08
+(0.6109734046830613, 0.9635418637145038)
+
+----------k,fail_at = 6,5------------
+Adding immediatefailureConstraints... 1466666188.4
+z3 to cnf... 1466666188.4 0.0577428340912
+cnf to dimacs... 1466666188.45 0.0466132164001
+saving dimacs to file... 1466666190.77 2.31599998474
+
+num_vars = 1412
+num_clauses = 5174
+
+
+running sharpSAT on file... 1466666190.77 0.00419282913208
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_6_6_5.txt > umc_dimacs6_6_15_6_6_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666190.81 0.0437531471252
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_6_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_6_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_6_6_5.txt.ind')
+running approxMC on file... 1466666190.93 0.113302946091
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_5.txt.ind > umc_dimacs6_6_15_6_6_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666190.98 0.0527830123901
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_6_6_5.txt > umc_dimacs6_6_15_6_6_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002672
+approxMC_time 0.0524408817291
+mis_time 0.105628967285
+approxMC_mis_time 0.0527379512787
+mis+approxMC time 0.158366918564
+
+lb=0.0, ub=0.0
+p2=1.94004845627e-08
+(0.6109734240835458, 0.9635418637145038)
+Time taken = 56.6415610313
+Probability lies in (0.610973424084,0.963541863715)
+Uncertainity = 0.352568439631
+Do you want to continue with k=7
+----------------------k_crashes = 7 -----------------------
+Adding k_maxSimulationConstraints... 1466666191.03
+
+----------k,fail_at = 7,0------------
+Adding immediatefailureConstraints... 1466666191.08
+z3 to cnf... 1466666191.08 0.101969003677
+cnf to dimacs... 1466666191.13 0.0463919639587
+saving dimacs to file... 1466666193.56 2.4359691143
+
+num_vars = 1454
+num_clauses = 5
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_7_6_0.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_7_6_1.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_7_6_2.txt ../mis.out.gcnf false 0
+398
+
+
+running sharpSAT on file... 1466666193.57 0.00437784194946
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_7_6_0.txt > umc_dimacs6_6_15_6_7_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666193.97 0.401448965073
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_7_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_7_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_7_6_0.txt.ind')
+running approxMC on file... 1466666208.91 14.939330101
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_0.txt.ind > umc_dimacs6_6_15_6_7_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+49 x 2^7
+
+running approxMC on file... 1466666209.71 0.80250287056
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_0.txt > umc_dimacs6_6_15_6_7_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+49 x 2^7
+
+numSols_sharpSAT 6386
+numSols_approxMC 6272
+numSols_approxMC_mis 6272
+sharpSAT_time 0.350752
+approxMC_time 28.3041300774
+mis_time 14.9316921234
+approxMC_mis_time 0.802437067032
+mis+approxMC time 15.7341291904
+
+lb=6.81830962271e-10, ub=6.81830962271e-10
+p2=6.87062674948e-10
+(0.6109734240887775, 0.9635418630326729)
+
+----------k,fail_at = 7,1------------
+Adding immediatefailureConstraints... 1466666238.02
+z3 to cnf... 1466666238.02 28.3077452183
+cnf to dimacs... 1466666238.07 0.0463337898254
+saving dimacs to file... 1466666240.52 2.45209813118
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666240.52 0.0045280456543
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_7_6_1.txt > umc_dimacs6_6_15_6_7_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666240.67 0.151521921158
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_7_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_7_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_7_6_1.txt.ind')
+running approxMC on file... 1466666244.24 3.56574702263
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_1.txt.ind > umc_dimacs6_6_15_6_7_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+48 x 2^7
+
+running approxMC on file... 1466666244.89 0.652673959732
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_1.txt > umc_dimacs6_6_15_6_7_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+45 x 2^7
+
+numSols_sharpSAT 6021
+numSols_approxMC 5760
+numSols_approxMC_mis 6144
+sharpSAT_time 0.088476
+approxMC_time 18.4329500198
+mis_time 3.55817389488
+approxMC_mis_time 0.652606010437
+mis+approxMC time 4.21077990532
+
+lb=5.75758635121e-10, ub=5.75758635121e-10
+p2=6.15347420197e-10
+(0.6109734241283663, 0.9635418624569142)
+
+----------k,fail_at = 7,2------------
+Adding immediatefailureConstraints... 1466666263.32
+z3 to cnf... 1466666263.33 18.436868906
+cnf to dimacs... 1466666263.38 0.0468351840973
+saving dimacs to file... 1466666265.87 2.49254703522
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666265.87 0.00445699691772
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_7_6_2.txt > umc_dimacs6_6_15_6_7_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666265.92 0.0446507930756
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_7_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_7_6_2.
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_7_6_3.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_7_6_4.txt ../mis.out.gcnf false 0
+txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_7_6_2.txt.ind')
+running approxMC on file... 1466666266.03 0.108340024948
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_2.txt.ind > umc_dimacs6_6_15_6_7_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666266.08 0.0519471168518
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_2.txt > umc_dimacs6_6_15_6_7_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002766
+approxMC_time 0.0532128810883
+mis_time 0.100597143173
+approxMC_mis_time 0.0519030094147
+mis+approxMC time 0.152500152588
+
+lb=0.0, ub=0.0
+p2=5.5111776749e-10
+(0.6109734246794841, 0.9635418624569142)
+
+----------k,fail_at = 7,3------------
+Adding immediatefailureConstraints... 1466666266.13
+z3 to cnf... 1466666266.13 0.0568640232086
+cnf to dimacs... 1466666266.18 0.0473148822784
+saving dimacs to file... 1466666268.66 2.47541499138
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666268.66 0.00432014465332
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_7_6_3.txt > umc_dimacs6_6_15_6_7_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666268.71 0.0452628135681
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_7_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_7_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_7_6_3.txt.ind')
+running approxMC on file... 1466666268.81 0.1082072258
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_3.txt.ind > umc_dimacs6_6_15_6_7_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666268.87 0.0524799823761
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_3.txt > umc_dimacs6_6_15_6_7_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002805
+approxMC_time 0.0521559715271
+mis_time 0.100435972214
+approxMC_mis_time 0.0524339675903
+mis+approxMC time 0.152869939804
+
+lb=0.0, ub=0.0
+p2=4.93592373469e-10
+(0.6109734251730765, 0.9635418624569142)
+
+----------k,fail_at = 7,4------------
+Adding immediatefailureConstraints... 1466666268.92
+z3 to cnf... 1466666268.92 0.0563859939575
+cnf to dimacs... 1466666268.97 0.0466628074646
+saving dimacs to file... 1466666271.42 2.45140099525
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666271.43 0.00448107719421
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_7_6_4.txt > umc_dimacs6_6_15_6_7_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666271.47 0.0445899963379
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_7_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_7_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_7_6_4.txt.ind')
+running approxMC on file... 1466666271.59 0.115144014359
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_4.txt.ind > umc_dimacs6_6_15_6_7_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666271.64 0.0523209571838
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_4.txt > umc_dimacs6_6_15_6_7_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_7_6_5.txt ../mis.out.gcnf false 0
+
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_8_6_0.txt ../mis.out.gcnf false 0
+
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002815
+approxMC_time 0.0522398948669
+mis_time 0.1075091362
+approxMC_mis_time 0.0522561073303
+mis+approxMC time 0.15976524353
+
+lb=0.0, ub=0.0
+p2=4.42071451001e-10
+(0.610973425615148, 0.9635418624569142)
+
+----------k,fail_at = 7,5------------
+Adding immediatefailureConstraints... 1466666271.69
+z3 to cnf... 1466666271.69 0.0557980537415
+cnf to dimacs... 1466666271.74 0.0470600128174
+saving dimacs to file... 1466666274.2 2.45488500595
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666274.2 0.00437998771667
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_7_6_5.txt > umc_dimacs6_6_15_6_7_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666274.24 0.0441648960114
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_7_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_7_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_7_6_5.txt.ind')
+running approxMC on file... 1466666274.35 0.107946157455
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_5.txt.ind > umc_dimacs6_6_15_6_7_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666274.4 0.0522849559784
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_7_6_5.txt > umc_dimacs6_6_15_6_7_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.00282
+approxMC_time 0.052227973938
+mis_time 0.100587129593
+approxMC_mis_time 0.0522391796112
+mis+approxMC time 0.152826309204
+
+lb=0.0, ub=0.0
+p2=3.95928256381e-10
+(0.6109734260110763, 0.9635418624569142)
+Time taken = 83.4253029823
+Probability lies in (0.610973426011,0.963541862457)
+Uncertainity = 0.352568436446
+Do you want to continue with k=8
+----------------------k_crashes = 8 -----------------------
+Adding k_maxSimulationConstraints... 1466666274.46
+
+----------k,fail_at = 8,0------------
+Adding immediatefailureConstraints... 1466666274.5
+z3 to cnf... 1466666274.51 0.101211071014
+cnf to dimacs... 1466666274.55 0.0468528270721
+saving dimacs to file... 1466666277.0 2.44410204887
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666277.0 0.00441813468933
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_8_6_0.txt > umc_dimacs6_6_15_6_8_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666277.35 0.351183891296
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_8_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_8_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_8_6_0.txt.ind')
+running approxMC on file... 1466666291.99 14.6324539185
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_0.txt.ind > umc_dimacs6_6_15_6_8_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+48 x 2^7
+
+running approxMC on file... 1466666292.89 0.902522087097
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_0.txt > umc_dimacs6_6_15_6_8_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+48 x 2^7
+
+numSols_sharpSAT 6424
+numSols_approxMC 6144
+numSols_approxMC_mis 6144
+sharpSAT_time 0.299214
+approxMC_time 35.6752400398
+mis_time 14.6249349117
+approxMC_mis_time 0.902456998825
+mis+approxMC time 15.5273919106
+
+lb=1.17790403672e-11, ub=1.17790403672e-11
+p2=1.17992099568e-11
+(0.6109734260110965, 0.9635418624451352)
+
+----------k,fail_at = 8,1------------
+Adding immediatefailureConstraints... 1466666328.
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_8_6_1.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_8_6_2.txt ../mis.out.gcnf false 0
+56
+z3 to cnf... 1466666328.57 35.6788580418
+cnf to dimacs... 1466666328.61 0.0466570854187
+saving dimacs to file... 1466666331.08 2.46694993973
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666331.08 0.00438594818115
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_8_6_1.txt > umc_dimacs6_6_15_6_8_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666331.24 0.150815010071
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_8_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_8_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_8_6_1.txt.ind')
+running approxMC on file... 1466666335.9 4.66893005371
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_1.txt.ind > umc_dimacs6_6_15_6_8_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+47 x 2^7
+
+running approxMC on file... 1466666336.51 0.603096008301
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_1.txt > umc_dimacs6_6_15_6_8_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+46 x 2^7
+
+numSols_sharpSAT 6234
+numSols_approxMC 5888
+numSols_approxMC_mis 6016
+sharpSAT_time 0.09013
+approxMC_time 13.0727889538
+mis_time 4.66061687469
+approxMC_mis_time 0.603029966354
+mis+approxMC time 5.26364684105
+
+lb=1.00775689803e-11, ub=1.00775689803e-11
+p2=1.04024954104e-11
+(0.6109734260114215, 0.9635418624350576)
+
+----------k,fail_at = 8,2------------
+Adding immediatefailureConstraints... 1466666349.58
+z3 to cnf... 1466666349.58 13.0769498348
+cnf to dimacs... 1466666349.63 0.047131061554
+saving dimacs to file... 1466666352.09 2.45809412003
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666352.09 0.00435996055603
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_8_6_2.txt > umc_dimacs6_6_15_6_8_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666352.14 0.044713973999
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_8_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_8_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_8_6_2.txt.ind')
+running approxMC on file... 1466666352.25 0.108850955963
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_2.txt.ind > umc_dimacs6_6_15_6_8_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666352.3 0.052864074707
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_2.txt > umc_dimacs6_6_15_6_8_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002719
+approxMC_time 0.0520379543304
+mis_time 0.10088300705
+approxMC_mis_time 0.0528199672699
+mis+approxMC time 0.153702974319
+
+lb=0.0, ub=0.0
+p2=9.1711149441e-12
+(0.6109734260205926, 0.9635418624350576)
+
+----------k,fail_at = 8,3------------
+Adding immediatefailureConstraints... 1466666352.35
+z3 to cnf... 1466666352.36 0.0557639598846
+cnf to dimacs... 1466666352.4 0.0466330051422
+saving dimacs to file... 1466666354.86 2.45664691925
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666354.86 0.00452709197998
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_8_6_3.txt > umc_dimacs6_6_15_6_8_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666354.91 0.0439898967743
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_8_6_3.txt')
+('cmd
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_8_6_3.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_8_6_4.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_8_6_5.txt ../mis.out.gcnf false 0
+ >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_8_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_8_6_3.txt.ind')
+running approxMC on file... 1466666355.02 0.108253002167
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_3.txt.ind > umc_dimacs6_6_15_6_8_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666355.07 0.0516929626465
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_3.txt > umc_dimacs6_6_15_6_8_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002753
+approxMC_time 0.0525960922241
+mis_time 0.101129055023
+approxMC_mis_time 0.0516519546509
+mis+approxMC time 0.152781009674
+
+lb=0.0, ub=0.0
+p2=8.08549737341e-12
+(0.6109734260286781, 0.9635418624350576)
+
+----------k,fail_at = 8,4------------
+Adding immediatefailureConstraints... 1466666355.12
+z3 to cnf... 1466666355.12 0.0563650131226
+cnf to dimacs... 1466666355.17 0.0470850467682
+saving dimacs to file... 1466666357.65 2.48025202751
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666357.66 0.00432896614075
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_8_6_4.txt > umc_dimacs6_6_15_6_8_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666357.7 0.0439479351044
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_8_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_8_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_8_6_4.txt.ind')
+running approxMC on file... 1466666357.81 0.107993125916
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_4.txt.ind > umc_dimacs6_6_15_6_8_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666357.86 0.0526130199432
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_4.txt > umc_dimacs6_6_15_6_8_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002815
+approxMC_time 0.0524230003357
+mis_time 0.10045003891
+approxMC_mis_time 0.0525698661804
+mis+approxMC time 0.15301990509
+
+lb=0.0, ub=0.0
+p2=7.12838822476e-12
+(0.6109734260358065, 0.9635418624350576)
+
+----------k,fail_at = 8,5------------
+Adding immediatefailureConstraints... 1466666357.91
+z3 to cnf... 1466666357.92 0.0559680461884
+cnf to dimacs... 1466666357.96 0.0473799705505
+saving dimacs to file... 1466666360.42 2.45243501663
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666360.42 0.00439095497131
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_8_6_5.txt > umc_dimacs6_6_15_6_8_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666360.46 0.043751001358
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_8_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_8_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_8_6_5.txt.ind')
+running approxMC on file... 1466666360.57 0.108777046204
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_5.txt.ind > umc_dimacs6_6_15_6_8_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666360.63 0.0528709888458
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_8_6_5.txt > umc_dimacs6_6_15_6_8_6_5.txt.sol.approx')
+('cmd >>>', 'pyth
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_9_6_0.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_9_6_1.txt ../mis.out.gcnf false 0
+on3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002815
+approxMC_time 0.0522708892822
+mis_time 0.101118803024
+approxMC_mis_time 0.0528249740601
+mis+approxMC time 0.153943777084
+
+lb=0.0, ub=0.0
+p2=6.28457549811e-12
+(0.610973426042091, 0.9635418624350576)
+Time taken = 86.220993042
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436393
+Do you want to continue with k=9
+----------------------k_crashes = 9 -----------------------
+Adding k_maxSimulationConstraints... 1466666360.68
+
+----------k,fail_at = 9,0------------
+Adding immediatefailureConstraints... 1466666360.72
+z3 to cnf... 1466666360.73 0.100672960281
+cnf to dimacs... 1466666360.77 0.0464279651642
+saving dimacs to file... 1466666363.21 2.43833398819
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666363.22 0.00434613227844
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_9_6_0.txt > umc_dimacs6_6_15_6_9_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666363.57 0.351516008377
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_9_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_9_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_9_6_0.txt.ind')
+running approxMC on file... 1466666376.55 12.9836888313
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_0.txt.ind > umc_dimacs6_6_15_6_9_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+39 x 2^7
+
+running approxMC on file... 1466666377.3 0.751836061478
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_0.txt > umc_dimacs6_6_15_6_9_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+40 x 2^7
+
+numSols_sharpSAT 5004
+numSols_approxMC 5120
+numSols_approxMC_mis 4992
+sharpSAT_time 0.280023
+approxMC_time 14.0289049149
+mis_time 12.9762310982
+approxMC_mis_time 0.751767158508
+mis+approxMC time 13.7279982567
+
+lb=1.57571711445e-13, ub=1.57571711445e-13
+p2=1.57603200596e-13
+(0.610973426042091, 0.9635418624349)
+
+----------k,fail_at = 9,1------------
+Adding immediatefailureConstraints... 1466666391.33
+z3 to cnf... 1466666391.34 14.0330998898
+cnf to dimacs... 1466666391.38 0.0469291210175
+saving dimacs to file... 1466666393.84 2.45958709717
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666393.85 0.00430798530579
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_9_6_1.txt > umc_dimacs6_6_15_6_9_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666393.95 0.100001811981
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_9_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_9_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_9_6_1.txt.ind')
+running approxMC on file... 1466666398.52 4.56857800484
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_1.txt.ind > umc_dimacs6_6_15_6_9_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+82 x 2^6
+
+running approxMC on file... 1466666399.17 0.651988983154
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_1.txt > umc_dimacs6_6_15_6_9_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+42 x 2^7
+
+numSols_sharpSAT 4941
+numSols_approxMC 5376
+numSols_approxMC_mis 5248
+sharpSAT_time 0.058874
+approxMC_time 8.26540613174
+mis_time 4.56061601639
+approxMC_mis_time 0.651924133301
+mis+approxMC time 5.21254014969
+
+lb=1.35027113627e-
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_9_6_2.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_9_6_3.txt ../mis.out.gcnf false 0
+13, ub=1.35027113627e-13
+p2=1.36776098705e-13
+(0.6109734260420928, 0.963541862434765)
+
+----------k,fail_at = 9,2------------
+Adding immediatefailureConstraints... 1466666407.43
+z3 to cnf... 1466666407.44 8.26917314529
+cnf to dimacs... 1466666407.48 0.0465960502625
+saving dimacs to file... 1466666409.94 2.45740699768
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666409.94 0.0043740272522
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_9_6_2.txt > umc_dimacs6_6_15_6_9_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666409.99 0.0440299510956
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_9_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_9_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_9_6_2.txt.ind')
+running approxMC on file... 1466666410.1 0.108345985413
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_2.txt.ind > umc_dimacs6_6_15_6_9_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666410.15 0.0522379875183
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_2.txt > umc_dimacs6_6_15_6_9_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002796
+approxMC_time 0.0521688461304
+mis_time 0.100601911545
+approxMC_mis_time 0.0521969795227
+mis+approxMC time 0.152798891068
+
+lb=0.0, ub=0.0
+p2=1.18701277044e-13
+(0.6109734260422115, 0.963541862434765)
+
+----------k,fail_at = 9,3------------
+Adding immediatefailureConstraints... 1466666410.2
+z3 to cnf... 1466666410.21 0.0558440685272
+cnf to dimacs... 1466666410.25 0.0466618537903
+saving dimacs to file... 1466666412.71 2.4542081356
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666412.71 0.00433397293091
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_9_6_3.txt > umc_dimacs6_6_15_6_9_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666412.76 0.0451400279999
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_9_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_9_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_9_6_3.txt.ind')
+running approxMC on file... 1466666412.87 0.109513998032
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_3.txt.ind > umc_dimacs6_6_15_6_9_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666412.92 0.0530099868774
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_3.txt > umc_dimacs6_6_15_6_9_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002809
+approxMC_time 0.0527408123016
+mis_time 0.101348876953
+approxMC_mis_time 0.0529608726501
+mis+approxMC time 0.154309749603
+
+lb=0.0, ub=0.0
+p2=1.03015024593e-13
+(0.6109734260423145, 0.963541862434765)
+
+----------k,fail_at = 9,4------------
+Adding immediatefailureConstraints... 1466666412.97
+z3 to cnf... 1466666412.97 0.0563080310822
+cnf to dimacs... 1466666413.02 0.0464699268341
+saving dimacs to file... 1466666415.48 2.45659184456
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666415.48 0.00439310073853
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_9_6_4.txt > umc_dimacs6_6_15_6_9_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on fi
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_9_6_4.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_9_6_5.txt ../mis.out.gcnf false 0
+
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_10_6_0.txt ../mis.out.gcnf false 0
+le... 1466666415.53 0.0449709892273
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_9_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_9_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_9_6_4.txt.ind')
+running approxMC on file... 1466666415.64 0.108952999115
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_4.txt.ind > umc_dimacs6_6_15_6_9_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666415.69 0.0527210235596
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_4.txt > umc_dimacs6_6_15_6_9_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002707
+approxMC_time 0.0525279045105
+mis_time 0.101273059845
+approxMC_mis_time 0.052677154541
+mis+approxMC time 0.153950214386
+
+lb=0.0, ub=0.0
+p2=8.94016943729e-14
+(0.6109734260424039, 0.963541862434765)
+
+----------k,fail_at = 9,5------------
+Adding immediatefailureConstraints... 1466666415.74
+z3 to cnf... 1466666415.74 0.0561571121216
+cnf to dimacs... 1466666415.79 0.0465998649597
+saving dimacs to file... 1466666418.25 2.45942091942
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666418.25 0.00434017181396
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_9_6_5.txt > umc_dimacs6_6_15_6_9_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666418.3 0.0451560020447
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_9_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_9_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_9_6_5.txt.ind')
+running approxMC on file... 1466666418.41 0.108294010162
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_5.txt.ind > umc_dimacs6_6_15_6_9_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666418.46 0.0533359050751
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_9_6_5.txt > umc_dimacs6_6_15_6_9_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002851
+approxMC_time 0.0533740520477
+mis_time 0.100648164749
+approxMC_mis_time 0.0532901287079
+mis+approxMC time 0.153938293457
+
+lb=0.0, ub=0.0
+p2=7.75873518285e-14
+(0.6109734260424815, 0.963541862434765)
+Time taken = 57.8368170261
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=10
+----------------------k_crashes = 10 -----------------------
+Adding k_maxSimulationConstraints... 1466666418.52
+
+----------k,fail_at = 10,0------------
+Adding immediatefailureConstraints... 1466666418.56
+z3 to cnf... 1466666418.56 0.102514982224
+cnf to dimacs... 1466666418.61 0.046345949173
+saving dimacs to file... 1466666421.05 2.43520498276
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666421.05 0.00439405441284
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_10_6_0.txt > umc_dimacs6_6_15_6_10_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666421.25 0.200960159302
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_10_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_10_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_10_6_0.txt.ind')
+running approxMC on file... 1466666434.94 13.68759799
+('cmd >>>'
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_10_6_1.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_10_6_2.txt ../mis.out.gcnf false 0
+, './scalmc umc_dimacs6_6_15_6_10_6_0.txt.ind > umc_dimacs6_6_15_6_10_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+47 x 2^6
+
+running approxMC on file... 1466666435.64 0.701553821564
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_0.txt > umc_dimacs6_6_15_6_10_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+48 x 2^6
+
+numSols_sharpSAT 3003
+numSols_approxMC 3072
+numSols_approxMC_mis 3008
+sharpSAT_time 0.149814
+approxMC_time 10.2684988976
+mis_time 13.6798481941
+approxMC_mis_time 0.701488018036
+mis+approxMC time 14.3813362122
+
+lb=1.62395075865e-15, ub=1.62395075865e-15
+p2=1.62395075865e-15
+(0.6109734260424815, 0.9635418624347634)
+
+----------k,fail_at = 10,1------------
+Adding immediatefailureConstraints... 1466666445.91
+z3 to cnf... 1466666445.91 10.2721850872
+cnf to dimacs... 1466666445.96 0.047210931778
+saving dimacs to file... 1466666448.42 2.45716309547
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666448.42 0.0044059753418
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_10_6_1.txt > umc_dimacs6_6_15_6_10_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666448.52 0.100363016129
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_10_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_10_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_10_6_1.txt.ind')
+running approxMC on file... 1466666453.14 4.61705899239
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_1.txt.ind > umc_dimacs6_6_15_6_10_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+47 x 2^6
+
+running approxMC on file... 1466666453.79 0.65200304985
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_1.txt > umc_dimacs6_6_15_6_10_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+44 x 2^6
+
+numSols_sharpSAT 2991
+numSols_approxMC 2816
+numSols_approxMC_mis 3008
+sharpSAT_time 0.047361
+approxMC_time 6.51278305054
+mis_time 4.6095290184
+approxMC_mis_time 0.651937007904
+mis+approxMC time 5.26146602631
+
+lb=1.38178251225e-15, ub=1.38178251225e-15
+p2=1.38732627358e-15
+(0.6109734260424815, 0.963541862434762)
+
+----------k,fail_at = 10,2------------
+Adding immediatefailureConstraints... 1466666460.3
+z3 to cnf... 1466666460.31 6.51720404625
+cnf to dimacs... 1466666460.36 0.0485987663269
+saving dimacs to file... 1466666462.82 2.46221113205
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666462.82 0.00440788269043
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_10_6_2.txt > umc_dimacs6_6_15_6_10_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666462.87 0.0441811084747
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_10_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_10_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_10_6_2.txt.ind')
+running approxMC on file... 1466666462.98 0.108548879623
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_2.txt.ind > umc_dimacs6_6_15_6_10_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666463.03 0.0529611110687
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_2.txt > umc_dimacs6_6_15_6_10_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_10_6_3.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_10_6_4.txt ../mis.out.gcnf false 0
+0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002848
+approxMC_time 0.052759885788
+mis_time 0.100594043732
+approxMC_mis_time 0.0529148578644
+mis+approxMC time 0.153508901596
+
+lb=0.0, ub=0.0
+p2=1.18518014116e-15
+(0.6109734260424827, 0.963541862434762)
+
+----------k,fail_at = 10,3------------
+Adding immediatefailureConstraints... 1466666463.08
+z3 to cnf... 1466666463.09 0.0563380718231
+cnf to dimacs... 1466666463.13 0.0466349124908
+saving dimacs to file... 1466666465.59 2.45364499092
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666465.59 0.00445294380188
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_10_6_3.txt > umc_dimacs6_6_15_6_10_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666465.64 0.0453841686249
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_10_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_10_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_10_6_3.txt.ind')
+running approxMC on file... 1466666465.74 0.108039855957
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_3.txt.ind > umc_dimacs6_6_15_6_10_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666465.8 0.0526101589203
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_3.txt > umc_dimacs6_6_15_6_10_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002878
+approxMC_time 0.0521929264069
+mis_time 0.100908041
+approxMC_mis_time 0.0525679588318
+mis+approxMC time 0.153475999832
+
+lb=0.0, ub=0.0
+p2=1.01248854992e-15
+(0.6109734260424837, 0.963541862434762)
+
+----------k,fail_at = 10,4------------
+Adding immediatefailureConstraints... 1466666465.85
+z3 to cnf... 1466666465.85 0.0557818412781
+cnf to dimacs... 1466666465.9 0.0465850830078
+saving dimacs to file... 1466666468.35 2.45433402061
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666468.36 0.0043740272522
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_10_6_4.txt > umc_dimacs6_6_15_6_10_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666468.4 0.0452659130096
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_10_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_10_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_10_6_4.txt.ind')
+running approxMC on file... 1466666468.51 0.108465909958
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_4.txt.ind > umc_dimacs6_6_15_6_10_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666468.56 0.0531411170959
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_4.txt > umc_dimacs6_6_15_6_10_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002784
+approxMC_time 0.0521988868713
+mis_time 0.100612878799
+approxMC_mis_time 0.0530960559845
+mis+approxMC time 0.153708934784
+
+lb=0.0, ub=0.0
+p2=8.64959703683e-16
+(0.6109734260424846, 0.963541862434762)
+
+----------k,fail_at = 10,5------------
+Adding immediatefailureConstraints... 1466666468.62
+z3 to cnf... 1466666468.62 0.0557780265808
+cnf to dimacs... 1466666468.67 0.0466079711914
+saving dimacs to file... 1466666471.13 2.46615099907
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666471.14 0.00449991226196
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_10_6_5.tx
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_10_6_5.txt ../mis.out.gcnf false 0
+
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_11_6_0.txt ../mis.out.gcnf false 0
+t > umc_dimacs6_6_15_6_10_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666471.18 0.0446741580963
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_10_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_10_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_10_6_5.txt.ind')
+running approxMC on file... 1466666471.29 0.108409881592
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_5.txt.ind > umc_dimacs6_6_15_6_10_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666471.34 0.0532369613647
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_10_6_5.txt > umc_dimacs6_6_15_6_10_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002797
+approxMC_time 0.0531799793243
+mis_time 0.101233959198
+approxMC_mis_time 0.0531949996948
+mis+approxMC time 0.154428958893
+
+lb=0.0, ub=0.0
+p2=7.38927160271e-16
+(0.6109734260424854, 0.963541862434762)
+Time taken = 52.881155014
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=11
+----------------------k_crashes = 11 -----------------------
+Adding k_maxSimulationConstraints... 1466666471.4
+
+----------k,fail_at = 11,0------------
+Adding immediatefailureConstraints... 1466666471.44
+z3 to cnf... 1466666471.45 0.102653980255
+cnf to dimacs... 1466666471.49 0.046266078949
+saving dimacs to file... 1466666473.93 2.43964195251
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666473.94 0.00433301925659
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_11_6_0.txt > umc_dimacs6_6_15_6_11_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666474.09 0.151057004929
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_11_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_11_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_11_6_0.txt.ind')
+running approxMC on file... 1466666486.52 12.4338650703
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_0.txt.ind > umc_dimacs6_6_15_6_11_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+48 x 2^5
+
+running approxMC on file... 1466666487.23 0.706331014633
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_0.txt > umc_dimacs6_6_15_6_11_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+42 x 2^5
+
+numSols_sharpSAT 1365
+numSols_approxMC 1344
+numSols_approxMC_mis 1536
+sharpSAT_time 0.090744
+approxMC_time 18.287266016
+mis_time 12.4259009361
+approxMC_mis_time 0.706264972687
+mis+approxMC time 13.1321659088
+
+lb=1.267671565e-17, ub=1.267671565e-17
+p2=1.267671565e-17
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 11,1------------
+Adding immediatefailureConstraints... 1466666505.51
+z3 to cnf... 1466666505.52 18.2909619808
+cnf to dimacs... 1466666505.56 0.0465250015259
+saving dimacs to file... 1466666508.13 2.56729388237
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666508.14 0.00461411476135
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_11_6_1.txt > umc_dimacs6_6_15_6_11_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666508.24 0.103077888489
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_11_6_1.txt')
+('cmd >>>', 'python3 run_
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_11_6_1.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_11_6_2.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_11_6_3.txt ../mis.out.gcnf false 0
+cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_11_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_11_6_1.txt.ind')
+running approxMC on file... 1466666513.01 4.76849913597
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_1.txt.ind > umc_dimacs6_6_15_6_11_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+44 x 2^5
+
+running approxMC on file... 1466666513.61 0.601480960846
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_1.txt > umc_dimacs6_6_15_6_11_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+42 x 2^5
+
+numSols_sharpSAT 1364
+numSols_approxMC 1344
+numSols_approxMC_mis 1408
+sharpSAT_time 0.03692
+approxMC_time 6.5630569458
+mis_time 4.7609360218
+approxMC_mis_time 0.601418972015
+mis+approxMC time 5.36235499382
+
+lb=1.06525798415e-17, ub=1.06525798415e-17
+p2=1.06603896507e-17
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 11,2------------
+Adding immediatefailureConstraints... 1466666520.17
+z3 to cnf... 1466666520.18 6.56675505638
+cnf to dimacs... 1466666520.22 0.0470519065857
+saving dimacs to file... 1466666522.69 2.46187710762
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666522.69 0.00439691543579
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_11_6_2.txt > umc_dimacs6_6_15_6_11_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666522.73 0.0443730354309
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_11_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_11_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_11_6_2.txt.ind')
+running approxMC on file... 1466666522.84 0.109101057053
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_2.txt.ind > umc_dimacs6_6_15_6_11_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666522.9 0.0528337955475
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_2.txt > umc_dimacs6_6_15_6_11_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002752
+approxMC_time 0.0540490150452
+mis_time 0.101505994797
+approxMC_mis_time 0.0527889728546
+mis+approxMC time 0.154294967651
+
+lb=0.0, ub=0.0
+p2=8.9647753127e-18
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 11,3------------
+Adding immediatefailureConstraints... 1466666522.95
+z3 to cnf... 1466666522.95 0.0578951835632
+cnf to dimacs... 1466666523.0 0.0470089912415
+saving dimacs to file... 1466666525.49 2.48747801781
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666525.49 0.0044858455658
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_11_6_3.txt > umc_dimacs6_6_15_6_11_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666525.54 0.0448570251465
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_11_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_11_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_11_6_3.txt.ind')
+running approxMC on file... 1466666525.65 0.109663963318
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_3.txt.ind > umc_dimacs6_6_15_6_11_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666525.7 0.0529341697693
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_3.txt > umc_dimacs6_6_
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_11_6_4.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_11_6_5.txt ../mis.out.gcnf false 0
+15_6_11_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002727
+approxMC_time 0.0540778636932
+mis_time 0.101484060287
+approxMC_mis_time 0.0528898239136
+mis+approxMC time 0.154373884201
+
+lb=0.0, ub=0.0
+p2=7.53886105858e-18
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 11,4------------
+Adding immediatefailureConstraints... 1466666525.75
+z3 to cnf... 1466666525.76 0.0575859546661
+cnf to dimacs... 1466666525.81 0.0468850135803
+saving dimacs to file... 1466666528.27 2.46682095528
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666528.28 0.00437808036804
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_11_6_4.txt > umc_dimacs6_6_15_6_11_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666528.32 0.0453999042511
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_11_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_11_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_11_6_4.txt.ind')
+running approxMC on file... 1466666528.43 0.10898399353
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_4.txt.ind > umc_dimacs6_6_15_6_11_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666528.48 0.0527200698853
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_4.txt > umc_dimacs6_6_15_6_11_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002687
+approxMC_time 0.0527398586273
+mis_time 0.10120010376
+approxMC_mis_time 0.0526731014252
+mis+approxMC time 0.153873205185
+
+lb=0.0, ub=0.0
+p2=6.33974908218e-18
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 11,5------------
+Adding immediatefailureConstraints... 1466666528.54
+z3 to cnf... 1466666528.54 0.0563068389893
+cnf to dimacs... 1466666528.59 0.0471720695496
+saving dimacs to file... 1466666531.05 2.46649003029
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666531.06 0.00445890426636
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_11_6_5.txt > umc_dimacs6_6_15_6_11_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666531.1 0.0447452068329
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_11_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_11_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_11_6_5.txt.ind')
+running approxMC on file... 1466666531.21 0.109040975571
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_5.txt.ind > umc_dimacs6_6_15_6_11_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666531.26 0.05260181427
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_11_6_5.txt > umc_dimacs6_6_15_6_11_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002675
+approxMC_time 0.0532109737396
+mis_time 0.100825786591
+approxMC_mis_time 0.0525550842285
+mis+approxMC time 0.153380870819
+
+lb=0.0, ub=0.0
+p2=5.33136479272e-18
+(0.6109734260424854, 0.963541862434762)
+Time taken = 59.9207930565
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=12
+----------------------k_crashes = 12 ------------
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_12_6_0.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_12_6_1.txt ../mis.out.gcnf false 0
+-----------
+Adding k_maxSimulationConstraints... 1466666531.32
+
+----------k,fail_at = 12,0------------
+Adding immediatefailureConstraints... 1466666531.36
+z3 to cnf... 1466666531.37 0.10210609436
+cnf to dimacs... 1466666531.41 0.0463230609894
+saving dimacs to file... 1466666533.86 2.45176196098
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666533.87 0.0042769908905
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_12_6_0.txt > umc_dimacs6_6_15_6_12_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666533.97 0.102108955383
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_12_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_12_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_12_6_0.txt.ind')
+running approxMC on file... 1466666546.05 12.0842809677
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_0.txt.ind > umc_dimacs6_6_15_6_12_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+58 x 2^3
+
+running approxMC on file... 1466666546.71 0.651965141296
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_0.txt > umc_dimacs6_6_15_6_12_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+56 x 2^3
+
+numSols_sharpSAT 455
+numSols_approxMC 448
+numSols_approxMC_mis 464
+sharpSAT_time 0.047807
+approxMC_time 10.0698981285
+mis_time 12.0763709545
+approxMC_mis_time 0.651895046234
+mis+approxMC time 12.7282660007
+
+lb=7.25674842444e-20, ub=7.25674842444e-20
+p2=7.25674842444e-20
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 12,1------------
+Adding immediatefailureConstraints... 1466666556.78
+z3 to cnf... 1466666556.78 10.0741529465
+cnf to dimacs... 1466666556.83 0.0472950935364
+saving dimacs to file... 1466666559.29 2.46329379082
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666559.3 0.00444412231445
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_12_6_1.txt > umc_dimacs6_6_15_6_12_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666559.37 0.0700209140778
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_12_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_12_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_12_6_1.txt.ind')
+running approxMC on file... 1466666563.33 3.96629595757
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_1.txt.ind > umc_dimacs6_6_15_6_12_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+58 x 2^3
+
+running approxMC on file... 1466666563.88 0.55221414566
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_1.txt > umc_dimacs6_6_15_6_12_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+56 x 2^3
+
+numSols_sharpSAT 455
+numSols_approxMC 448
+numSols_approxMC_mis 464
+sharpSAT_time 0.024211
+approxMC_time 3.4558300972
+mis_time 3.95849299431
+approxMC_mis_time 0.552145957947
+mis+approxMC time 4.51063895226
+
+lb=6.00715686647e-20, ub=6.00715686647e-20
+p2=6.00715686647e-20
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 12,2------------
+Adding immediatefailureConstraints... 1466666567.34
+z3 to cnf... 1466666567.34 3.45947504044
+cnf to dimacs... 1466666567.39 0.046443939209
+saving dimacs to file... 1466666569.86 2.47400999069
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666569.87 0.00475406646729
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_12_6_2.txt > umc_dimacs6_6_15_6_12_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt tem
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_12_6_2.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_12_6_3.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_12_6_4.txt ../mis.out.gcnf false 0
+p_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666569.92 0.0461759567261
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_12_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_12_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_12_6_2.txt.ind')
+running approxMC on file... 1466666570.02 0.108422994614
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_2.txt.ind > umc_dimacs6_6_15_6_12_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666570.08 0.0525410175323
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_2.txt > umc_dimacs6_6_15_6_12_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002652
+approxMC_time 0.0524389743805
+mis_time 0.100901842117
+approxMC_mis_time 0.0524950027466
+mis+approxMC time 0.153396844864
+
+lb=0.0, ub=0.0
+p2=4.97274144116e-20
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 12,3------------
+Adding immediatefailureConstraints... 1466666570.13
+z3 to cnf... 1466666570.13 0.0568270683289
+cnf to dimacs... 1466666570.18 0.0467479228973
+saving dimacs to file... 1466666572.65 2.46779108047
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666572.65 0.00443387031555
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_12_6_3.txt > umc_dimacs6_6_15_6_12_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666572.7 0.0446479320526
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_12_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_12_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_12_6_3.txt.ind')
+running approxMC on file... 1466666572.81 0.108822107315
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_3.txt.ind > umc_dimacs6_6_15_6_12_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666572.86 0.0534689426422
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_3.txt > umc_dimacs6_6_15_6_12_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002679
+approxMC_time 0.0525779724121
+mis_time 0.101012945175
+approxMC_mis_time 0.0534241199493
+mis+approxMC time 0.154437065125
+
+lb=0.0, ub=0.0
+p2=4.11644942697e-20
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 12,4------------
+Adding immediatefailureConstraints... 1466666572.91
+z3 to cnf... 1466666572.92 0.05619597435
+cnf to dimacs... 1466666572.96 0.0472781658173
+saving dimacs to file... 1466666575.46 2.49397182465
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666575.46 0.00442004203796
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_12_6_4.txt > umc_dimacs6_6_15_6_12_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666575.51 0.0453069210052
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_12_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_12_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_12_6_4.txt.ind')
+running approxMC on file... 1466666575.63 0.118940114975
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_4.txt.ind > umc_dimacs6_6_15_6_12_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt 
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_12_6_5.txt ../mis.out.gcnf false 0
+
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_13_6_0.txt ../mis.out.gcnf false 0
+temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666575.68 0.0552260875702
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_4.txt > umc_dimacs6_6_15_6_12_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002646
+approxMC_time 0.0539119243622
+mis_time 0.111067056656
+approxMC_mis_time 0.0551791191101
+mis+approxMC time 0.166246175766
+
+lb=0.0, ub=0.0
+p2=3.40760847618e-20
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 12,5------------
+Adding immediatefailureConstraints... 1466666575.73
+z3 to cnf... 1466666575.74 0.0578179359436
+cnf to dimacs... 1466666575.79 0.0476939678192
+saving dimacs to file... 1466666578.26 2.47336196899
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666578.26 0.00442409515381
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_12_6_5.txt > umc_dimacs6_6_15_6_12_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666578.31 0.0450789928436
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_12_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_12_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_12_6_5.txt.ind')
+running approxMC on file... 1466666578.42 0.108496904373
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_5.txt.ind > umc_dimacs6_6_15_6_12_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666578.47 0.052855014801
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_12_6_5.txt > umc_dimacs6_6_15_6_12_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002867
+approxMC_time 0.0536439418793
+mis_time 0.101271867752
+approxMC_mis_time 0.0528099536896
+mis+approxMC time 0.154081821442
+
+lb=0.0, ub=0.0
+p2=2.82082793266e-20
+(0.6109734260424854, 0.963541862434762)
+Time taken = 47.2064521313
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=13
+----------------------k_crashes = 13 -----------------------
+Adding k_maxSimulationConstraints... 1466666578.52
+
+----------k,fail_at = 13,0------------
+Adding immediatefailureConstraints... 1466666578.57
+z3 to cnf... 1466666578.57 0.102714061737
+cnf to dimacs... 1466666578.62 0.0464389324188
+saving dimacs to file... 1466666581.07 2.45323705673
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666581.08 0.00433897972107
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_13_6_0.txt > umc_dimacs6_6_15_6_13_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666581.15 0.0695450305939
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_13_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_13_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_13_6_0.txt.ind')
+running approxMC on file... 1466666589.72 8.57736992836
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_0.txt.ind > umc_dimacs6_6_15_6_13_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+52 x 2^1
+
+running approxMC on file... 1466666590.18 0.452564954758
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_0.txt > umc_dimacs6_6_15_6_13_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+52 x 2^1
+
+numS
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_13_6_1.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_13_6_2.txt ../mis.out.gcnf false 0
+ols_sharpSAT 105
+numSols_approxMC 104
+numSols_approxMC_mis 104
+sharpSAT_time 0.026123
+approxMC_time 3.15568995476
+mis_time 8.56933379173
+approxMC_mis_time 0.45249915123
+mis+approxMC time 9.02183294296
+
+lb=2.87591829076e-22, ub=2.87591829076e-22
+p2=2.87591829076e-22
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 13,1------------
+Adding immediatefailureConstraints... 1466666593.33
+z3 to cnf... 1466666593.34 3.15935397148
+cnf to dimacs... 1466666593.38 0.047217130661
+saving dimacs to file... 1466666595.85 2.46915793419
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666595.86 0.00434708595276
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_13_6_1.txt > umc_dimacs6_6_15_6_13_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666595.93 0.0703458786011
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_13_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_13_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_13_6_1.txt.ind')
+running approxMC on file... 1466666598.39 2.46391010284
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_1.txt.ind > umc_dimacs6_6_15_6_13_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+51 x 2^1
+
+running approxMC on file... 1466666598.79 0.402004003525
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_1.txt > umc_dimacs6_6_15_6_13_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+51 x 2^1
+
+numSols_sharpSAT 105
+numSols_approxMC 102
+numSols_approxMC_mis 102
+sharpSAT_time 0.01618
+approxMC_time 1.60431098938
+mis_time 2.45618200302
+approxMC_mis_time 0.401939153671
+mis+approxMC time 2.85812115669
+
+lb=2.34349496093e-22, ub=2.34349496093e-22
+p2=2.34349496093e-22
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 13,2------------
+Adding immediatefailureConstraints... 1466666600.4
+z3 to cnf... 1466666600.4 1.6088039875
+cnf to dimacs... 1466666600.45 0.0497159957886
+saving dimacs to file... 1466666602.93 2.48254704475
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666602.94 0.00432896614075
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_13_6_2.txt > umc_dimacs6_6_15_6_13_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666602.98 0.0452270507812
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_13_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_13_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_13_6_2.txt.ind')
+running approxMC on file... 1466666603.09 0.108458042145
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_2.txt.ind > umc_dimacs6_6_15_6_13_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666603.15 0.0533859729767
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_2.txt > umc_dimacs6_6_15_6_13_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002729
+approxMC_time 0.0525569915771
+mis_time 0.10058093071
+approxMC_mis_time 0.0533399581909
+mis+approxMC time 0.153920888901
+
+lb=0.0, ub=0.0
+p2=1.90964000944e-22
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 13,3------------
+Adding immediatefailureConstraints... 1466666603.2
+z3 to cnf... 1466666603.2 0.0562398433685
+cnf to dimacs... 1466666603.25 0.0469200611115
+saving dimacs to file... 1466666605.71 2.46494793892
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sh
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_13_6_3.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_13_6_4.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_13_6_5.txt ../mis.out.gcnf false 0
+arpSAT on file... 1466666605.72 0.00449013710022
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_13_6_3.txt > umc_dimacs6_6_15_6_13_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666605.76 0.0457589626312
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_13_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_13_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_13_6_3.txt.ind')
+running approxMC on file... 1466666605.87 0.108854055405
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_3.txt.ind > umc_dimacs6_6_15_6_13_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666605.93 0.0546629428864
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_3.txt > umc_dimacs6_6_15_6_13_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002887
+approxMC_time 0.0528540611267
+mis_time 0.101116895676
+approxMC_mis_time 0.0546188354492
+mis+approxMC time 0.155735731125
+
+lb=0.0, ub=0.0
+p2=1.55610531554e-22
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 13,4------------
+Adding immediatefailureConstraints... 1466666605.98
+z3 to cnf... 1466666605.98 0.0567469596863
+cnf to dimacs... 1466666606.03 0.0473530292511
+saving dimacs to file... 1466666608.5 2.4676399231
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666608.5 0.00451612472534
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_13_6_4.txt > umc_dimacs6_6_15_6_13_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666608.55 0.0450539588928
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_13_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_13_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_13_6_4.txt.ind')
+running approxMC on file... 1466666608.67 0.1173620224
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_4.txt.ind > umc_dimacs6_6_15_6_13_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666608.72 0.05242395401
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_4.txt > umc_dimacs6_6_15_6_13_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002981
+approxMC_time 0.0528378486633
+mis_time 0.109830856323
+approxMC_mis_time 0.0523779392242
+mis+approxMC time 0.162208795547
+
+lb=0.0, ub=0.0
+p2=1.26802106213e-22
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 13,5------------
+Adding immediatefailureConstraints... 1466666608.77
+z3 to cnf... 1466666608.77 0.0565168857574
+cnf to dimacs... 1466666608.82 0.0465121269226
+saving dimacs to file... 1466666611.27 2.45337605476
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666611.28 0.00439786911011
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_13_6_5.txt > umc_dimacs6_6_15_6_13_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666611.32 0.0450031757355
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_13_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_13_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_13_6_5.txt.ind')
+running approxMC on fi
+ 1454 
+./togmus ../umc_dimacs6_6_15_6_14_6_0.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_14_6_1.txt ../mis.out.gcnf false 0
+le... 1466666611.43 0.108705997467
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_5.txt.ind > umc_dimacs6_6_15_6_13_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666611.49 0.052227973938
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_13_6_5.txt > umc_dimacs6_6_15_6_13_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002935
+approxMC_time 0.0529170036316
+mis_time 0.101175069809
+approxMC_mis_time 0.0521738529205
+mis+approxMC time 0.153348922729
+
+lb=0.0, ub=0.0
+p2=1.033270305e-22
+(0.6109734260424854, 0.963541862434762)
+Time taken = 33.0138499737
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=14
+----------------------k_crashes = 14 -----------------------
+Adding k_maxSimulationConstraints... 1466666611.54
+
+----------k,fail_at = 14,0------------
+Adding immediatefailureConstraints... 1466666611.58
+z3 to cnf... 1466666611.59 0.101874828339
+cnf to dimacs... 1466666611.63 0.0463800430298
+saving dimacs to file... 1466666614.07 2.43993711472
+
+num_vars = 1454
+num_clauses = 5398
+
+
+running sharpSAT on file... 1466666614.08 0.00432300567627
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_14_6_0.txt > umc_dimacs6_6_15_6_14_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666614.15 0.0686588287354
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_14_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_14_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_14_6_0.txt.ind')
+running approxMC on file... 1466666614.81 0.659236192703
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_0.txt.ind > umc_dimacs6_6_15_6_14_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+15 x 2^0
+
+running approxMC on file... 1466666614.87 0.0692329406738
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_0.txt > umc_dimacs6_6_15_6_14_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+15 x 2^0
+
+numSols_sharpSAT 15
+numSols_approxMC 15
+numSols_approxMC_mis 15
+sharpSAT_time 0.023381
+approxMC_time 0.0697700977325
+mis_time 0.651314973831
+approxMC_mis_time 0.0691759586334
+mis+approxMC time 0.720490932465
+
+lb=7.05561826947e-25, ub=7.05561826947e-25
+p2=7.05561826947e-25
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 14,1------------
+Adding immediatefailureConstraints... 1466666614.94
+z3 to cnf... 1466666614.95 0.0734829902649
+cnf to dimacs... 1466666614.99 0.0467050075531
+saving dimacs to file... 1466666617.47 2.4776699543
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666617.48 0.00453495979309
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_14_6_1.txt > umc_dimacs6_6_15_6_14_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666617.55 0.068500995636
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_14_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_14_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_14_6_1.txt.ind')
+running approxMC on file... 1466666618.56 1.0098221302
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_1.txt.ind > umc_dimacs6_6_15_6_14_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+15 x 2^0
+
+running approxMC on file... 1466666618.62 0.068862915
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_14_6_2.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_14_6_3.txt ../mis.out.gcnf false 0
+0391
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_1.txt > umc_dimacs6_6_15_6_14_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+15 x 2^0
+
+numSols_sharpSAT 15
+numSols_approxMC 15
+numSols_approxMC_mis 15
+sharpSAT_time 0.014655
+approxMC_time 0.0762841701508
+mis_time 1.00205588341
+approxMC_mis_time 0.0688090324402
+mis+approxMC time 1.07086491585
+
+lb=5.65956604938e-25, ub=5.65956604938e-25
+p2=5.65956604938e-25
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 14,2------------
+Adding immediatefailureConstraints... 1466666618.7
+z3 to cnf... 1466666618.7 0.0798950195312
+cnf to dimacs... 1466666618.75 0.0467910766602
+saving dimacs to file... 1466666621.2 2.45360183716
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666621.21 0.00439310073853
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_14_6_2.txt > umc_dimacs6_6_15_6_14_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666621.25 0.0437619686127
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_14_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_14_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_14_6_2.txt.ind')
+running approxMC on file... 1466666621.36 0.109466075897
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_2.txt.ind > umc_dimacs6_6_15_6_14_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666621.41 0.0521290302277
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_2.txt > umc_dimacs6_6_15_6_14_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002666
+approxMC_time 0.0527629852295
+mis_time 0.102210044861
+approxMC_mis_time 0.0520439147949
+mis+approxMC time 0.154253959656
+
+lb=0.0, ub=0.0
+p2=4.53974218048e-25
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 14,3------------
+Adding immediatefailureConstraints... 1466666621.47
+z3 to cnf... 1466666621.47 0.056352853775
+cnf to dimacs... 1466666621.52 0.0465381145477
+saving dimacs to file... 1466666623.98 2.45857691765
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666623.98 0.00445795059204
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_14_6_3.txt > umc_dimacs6_6_15_6_14_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666624.02 0.0442671775818
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_14_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_14_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_14_6_3.txt.ind')
+running approxMC on file... 1466666624.13 0.108605861664
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_3.txt.ind > umc_dimacs6_6_15_6_14_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666624.19 0.0550129413605
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_3.txt > umc_dimacs6_6_15_6_14_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002843
+approxMC_time 0.0521631240845
+mis_time 0.10107421875
+approxMC_mis_time 0.0549659729004
+mis+approxMC time 0.15604019165
+
+lb=0.0, ub=0.0
+p2=3.64149104109e-25
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 14,4------------
+Adding immediatefailureConstraints... 1466
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_14_6_4.txt ../mis.out.gcnf false 0
+
+ 1469 
+./togmus ../umc_dimacs6_6_15_6_14_6_5.txt ../mis.out.gcnf false 0
+666624.24
+z3 to cnf... 1466666624.24 0.0557441711426
+cnf to dimacs... 1466666624.29 0.046630859375
+saving dimacs to file... 1466666626.77 2.48442006111
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666626.78 0.00447607040405
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_14_6_4.txt > umc_dimacs6_6_15_6_14_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666626.82 0.0451939105988
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_14_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_14_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_14_6_4.txt.ind')
+running approxMC on file... 1466666626.94 0.11138010025
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_4.txt.ind > umc_dimacs6_6_15_6_14_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666626.99 0.053347826004
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_4.txt > umc_dimacs6_6_15_6_14_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002753
+approxMC_time 0.0524110794067
+mis_time 0.103708982468
+approxMC_mis_time 0.0533049106598
+mis+approxMC time 0.157013893127
+
+lb=0.0, ub=0.0
+p2=2.92097138453e-25
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 14,5------------
+Adding immediatefailureConstraints... 1466666627.04
+z3 to cnf... 1466666627.05 0.0559711456299
+cnf to dimacs... 1466666627.09 0.0476839542389
+saving dimacs to file... 1466666629.55 2.45719099045
+
+num_vars = 1469
+num_clauses = 5443
+
+
+running sharpSAT on file... 1466666629.55 0.00442409515381
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_14_6_5.txt > umc_dimacs6_6_15_6_14_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666629.6 0.0452969074249
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_14_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_14_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_14_6_5.txt.ind')
+running approxMC on file... 1466666629.71 0.109421014786
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_5.txt.ind > umc_dimacs6_6_15_6_14_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666629.76 0.054123878479
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_14_6_5.txt > umc_dimacs6_6_15_6_14_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002861
+approxMC_time 0.0527539253235
+mis_time 0.101866006851
+approxMC_mis_time 0.0540790557861
+mis+approxMC time 0.155945062637
+
+lb=0.0, ub=0.0
+p2=2.34301656463e-25
+(0.6109734260424854, 0.963541862434762)
+Time taken = 18.2780578136
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=15
+----------------------k_crashes = 15 -----------------------
+Adding k_maxSimulationConstraints... 1466666629.82
+
+----------k,fail_at = 15,0------------
+Adding immediatefailureConstraints... 1466666629.87
+z3 to cnf... 1466666629.87 0.10723900795
+cnf to dimacs... 1466666629.92 0.0469582080841
+saving dimacs to file... 1466666632.5 2.5862429142
+
+num_vars = 1511
+num_clauses = 5681
+
+
+running sharpSAT on file... 1466666632.51 0.00471901893616
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_15_6_0.txt > umc_dimacs6_6_15_6_15_6_0.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.p
+ 1511 
+./togmus ../umc_dimacs6_6_15_6_15_6_0.txt ../mis.out.gcnf false 0
+
+ 1526 
+./togmus ../umc_dimacs6_6_15_6_15_6_1.txt ../mis.out.gcnf false 0
+
+ 1526 
+./togmus ../umc_dimacs6_6_15_6_15_6_2.txt ../mis.out.gcnf false 0
+y temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666632.61 0.100992918015
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_15_6_0.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_15_6_0.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_15_6_0.txt.ind')
+running approxMC on file... 1466666632.77 0.157808065414
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_0.txt.ind > umc_dimacs6_6_15_6_15_6_0.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+1 x 2^0
+
+running approxMC on file... 1466666632.84 0.0686209201813
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_0.txt > umc_dimacs6_6_15_6_15_6_0.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+1 x 2^0
+
+numSols_sharpSAT 1
+numSols_approxMC 1
+numSols_approxMC_mis 1
+sharpSAT_time 0.03812
+approxMC_time 0.0693929195404
+mis_time 0.150193929672
+approxMC_mis_time 0.0685670375824
+mis+approxMC time 0.218760967255
+
+lb=8.07793566946e-28, ub=8.07793566946e-28
+p2=8.07793566946e-28
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 15,1------------
+Adding immediatefailureConstraints... 1466666632.91
+z3 to cnf... 1466666632.91 0.0735549926758
+cnf to dimacs... 1466666632.96 0.0478789806366
+saving dimacs to file... 1466666635.56 2.60035800934
+
+num_vars = 1526
+num_clauses = 5726
+
+
+running sharpSAT on file... 1466666635.56 0.00461196899414
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_15_6_1.txt > umc_dimacs6_6_15_6_15_6_1.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666635.63 0.0684611797333
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_15_6_1.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_15_6_1.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_15_6_1.txt.ind')
+running approxMC on file... 1466666635.79 0.157814025879
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_1.txt.ind > umc_dimacs6_6_15_6_15_6_1.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+1 x 2^0
+
+running approxMC on file... 1466666635.86 0.0702638626099
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_1.txt > umc_dimacs6_6_15_6_15_6_1.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+1 x 2^0
+
+numSols_sharpSAT 1
+numSols_approxMC 1
+numSols_approxMC_mis 1
+sharpSAT_time 0.023123
+approxMC_time 0.0703029632568
+mis_time 0.1504778862
+approxMC_mis_time 0.0702030658722
+mis+approxMC time 0.220680952072
+
+lb=6.37835992279e-28, ub=6.37835992279e-28
+p2=6.37835992279e-28
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 15,2------------
+Adding immediatefailureConstraints... 1466666635.93
+z3 to cnf... 1466666635.93 0.0739369392395
+cnf to dimacs... 1466666635.98 0.0474371910095
+saving dimacs to file... 1466666638.58 2.59645295143
+
+num_vars = 1526
+num_clauses = 5726
+
+
+running sharpSAT on file... 1466666638.58 0.00470900535583
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_15_6_2.txt > umc_dimacs6_6_15_6_15_6_2.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666638.63 0.0445358753204
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_15_6_2.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_15_6_2.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_15_6_2.txt.ind')
+running approxMC on file... 1466666638.74 0.109275102615
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_2.t
+ 1526 
+./togmus ../umc_dimacs6_6_15_6_15_6_3.txt ../mis.out.gcnf false 0
+
+ 1526 
+./togmus ../umc_dimacs6_6_15_6_15_6_4.txt ../mis.out.gcnf false 0
+xt.ind > umc_dimacs6_6_15_6_15_6_2.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666638.79 0.0528559684753
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_2.txt > umc_dimacs6_6_15_6_15_6_2.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.003002
+approxMC_time 0.0535740852356
+mis_time 0.101390123367
+approxMC_mis_time 0.0528090000153
+mis+approxMC time 0.154199123383
+
+lb=0.0, ub=0.0
+p2=5.03637030169e-28
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 15,3------------
+Adding immediatefailureConstraints... 1466666638.84
+z3 to cnf... 1466666638.85 0.0575768947601
+cnf to dimacs... 1466666638.89 0.0473291873932
+saving dimacs to file... 1466666641.5 2.6060500145
+
+num_vars = 1526
+num_clauses = 5726
+
+
+running sharpSAT on file... 1466666641.5 0.0047619342804
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_15_6_3.txt > umc_dimacs6_6_15_6_15_6_3.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666641.55 0.0443229675293
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_15_6_3.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_15_6_3.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_15_6_3.txt.ind')
+running approxMC on file... 1466666641.66 0.109698057175
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_3.txt.ind > umc_dimacs6_6_15_6_15_6_3.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666641.71 0.0526828765869
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_3.txt > umc_dimacs6_6_15_6_15_6_3.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002885
+approxMC_time 0.0533549785614
+mis_time 0.102002859116
+approxMC_mis_time 0.0526390075684
+mis+approxMC time 0.154641866684
+
+lb=0.0, ub=0.0
+p2=3.9767316556e-28
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 15,4------------
+Adding immediatefailureConstraints... 1466666641.76
+z3 to cnf... 1466666641.77 0.0573029518127
+cnf to dimacs... 1466666641.82 0.0472681522369
+saving dimacs to file... 1466666644.41 2.59819889069
+
+num_vars = 1526
+num_clauses = 5726
+
+
+running sharpSAT on file... 1466666644.42 0.00465106964111
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_15_6_4.txt > umc_dimacs6_6_15_6_15_6_4.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666644.46 0.0463750362396
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_15_6_4.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_15_6_4.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_15_6_4.txt.ind')
+running approxMC on file... 1466666644.57 0.108017921448
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_4.txt.ind > umc_dimacs6_6_15_6_15_6_4.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666644.63 0.0530769824982
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_4.txt > umc_dimacs6_6_15_6_15_6_4.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.003088
+approxMC_time 0.0517809391022
+mis_time 0.100581884384
+approxMC_mis_time 0.0530309677
+ 1526 
+./togmus ../umc_dimacs6_6_15_6_15_6_5.txt ../mis.out.gcnf false 0
+124
+mis+approxMC time 0.153612852097
+
+lb=0.0, ub=0.0
+p2=3.14003810548e-28
+(0.6109734260424854, 0.963541862434762)
+
+----------k,fail_at = 15,5------------
+Adding immediatefailureConstraints... 1466666644.68
+z3 to cnf... 1466666644.68 0.0554320812225
+cnf to dimacs... 1466666644.73 0.0474300384521
+saving dimacs to file... 1466666647.33 2.59933304787
+
+num_vars = 1526
+num_clauses = 5726
+
+
+running sharpSAT on file... 1466666647.33 0.0046169757843
+('cmd >>>', './sharpSAT umc_dimacs6_6_15_6_15_6_5.txt > umc_dimacs6_6_15_6_15_6_5.txt.sol')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+running mis on file... 1466666647.38 0.0448269844055
+('cmd >>>', 'cd mis/ && python MIS.py -output=../mis.out ../umc_dimacs6_6_15_6_15_6_5.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+mis success
+('cmd >>>', 'cat umc_dimacs6_6_15_6_15_6_5.txt >> mis.out && mv mis.out umc_dimacs6_6_15_6_15_6_5.txt.ind')
+running approxMC on file... 1466666647.49 0.108959913254
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_5.txt.ind > umc_dimacs6_6_15_6_15_6_5.txt.ind.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+running approxMC on file... 1466666647.54 0.0538070201874
+('cmd >>>', './scalmc umc_dimacs6_6_15_6_15_6_5.txt > umc_dimacs6_6_15_6_15_6_5.txt.sol.approx')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+approxMC success
+reading approxMC's output...
+
+numSols_sharpSAT 0
+numSols_approxMC 0
+numSols_approxMC_mis 0
+sharpSAT_time 0.002906
+approxMC_time 0.0531878471375
+mis_time 0.101153850555
+approxMC_mis_time 0.0537588596344
+mis+approxMC time 0.15491271019
+
+lb=0.0, ub=0.0
+p2=2.47938260808e-28
+(0.6109734260424854, 0.963541862434762)
+Time taken = 17.776747942
+Probability lies in (0.610973426042,0.963541862435)
+Uncertainity = 0.352568436392
+Do you want to continue with k=16
+RETURNING successProb... 1466666647.59 0.0535550117493
+###############################################
+###############################################
+
+
+###############################################
+###############################################
+RUNNING successProb... 1466666647.6 0.00373005867004
+
+optimize=True
+naive=True
+p_omissions=0.015625
+p_crashes=0.015625
+
+Adding constraints... 1466666647.6
+STARTING successProb Iterations 1466666648.21 0.6098279953
+Time taken = 0
+Probability lies in (0,1)
+Uncertainity = 1
+Do you want to continue with k=0
+----------------------k_crashes = 0 -----------------------
+Adding k_maxSimulationConstraints... 1466666648.21
+Finding saboteurProbability... 1466666648.26
+saboteurProbability Iteration Count = 0
+Time taken = 0.0810840129852
+Probability lies in (0.242354892989,1)
+Uncertainity = 0.757645107011
+Do you want to continue with k=1
+----------------------k_crashes = 1 -----------------------
+Adding k_maxSimulationConstraints... 1466666648.3
+Finding saboteurProbability... 1466666648.34
+saboteurProbability Iteration Count = 7
+Time taken = 6.35606694221
+Probability lies in (0.573670037648,0.971060674644)
+Uncertainity = 0.397390636996
+Do you want to continue with k=2
+----------------------k_crashes = 2 -----------------------
+Adding k_maxSimulationConstraints... 1466666654.65
+Finding saboteurProbability... 1466666654.69
+saboteurProbability Iteration Count = 210
+Time taken = 187.353117943
+Probability lies in (0.783911713067,0.931398040737)
+Uncertainity = 0.14748632767
+Do you want to continue with k=3
+----------------------k_crashes = 3 -----------------------
+Adding k_maxSimulationConstraints... 1466666842.01
+Finding saboteurProbability... 1466666842.05
+successProb Timeout... 1466669242.53 2594.32585287
+###############################################
+###############################################
+
+
+###############################################
+###############################################
+RUNNING successProb... 1466669242.54 0.00610494613647
+
+optimize=False
+naive=True
+p_omissions=0.015625
+p_crashes=0.015625
+
+Adding constraints... 1466669242.54
+STARTING successProb Iterations 1466669243.15 0.612170219421
+Time taken = 0
+Probability lies in (0,1)
+Uncertainity = 1
+Do you want to continue with k=0
+----------------------k_crashes = 0 -----------------------
+Adding k_maxSimulationConstraints... 1466669243.16
+Finding saboteurProbability... 1466669243.2
+saboteurProbability Iteration Count = 0
+Time taken = 0.0894019603729
+Probability lies in (0.242354892989,1)
+Uncertainity = 0.757645107011
+Do you want to continue with k=1
+----------------------k_crashes = 1 -----------------------
+Adding k_maxSimulationConstraints... 1466669243.25
+Finding saboteurProbability... 1466669243.29
+saboteurProbability Iteration Count = 7
+Time taken = 0.283140897751
+Probability lies in (0.573670037648,0.971060674644)
+Uncertainity = 0.397390636996
+Do you want to continue with k=2
+----------------------k_crashes = 2 -----------------------
+Adding k_maxSimulationConstraints... 1466669243.53
+Finding saboteurProbability... 1466669243.57
+saboteurProbability Iteration Count = 581
+Time taken = 12.2468860149
+Probability lies in (0.783911713067,0.931398040737)
+Uncertainity = 0.14748632767
+Do you want to continue with k=3
+----------------------k_crashes = 3 -----------------------
+Adding k_maxSimulationConstraints... 1466669255.78
+Finding saboteurProbability... 1466669255.82
+saboteurProbability Iteration Count = 22341
+Time taken = 1806.62336183
+Probability lies in (0.866049954212,0.906220852)
+Uncertainity = 0.0401708977878
+Do you want to continue with k=4
+----------------------k_crashes = 4 -----------------------
+Adding k_maxSimulationConstraints... 1466671062.45
+Finding saboteurProbability... 1466671062.49
+successProb Timeout... 1466673462.55 4219.4008379
+###############################################
+###############################################
+
+
+###############################################
+###############################################
+RUNNING priorityScore... 1466673462.62 0.0720009803772
+
+optimize=True
+precision=10
+p_omissions=0.015625
+p_crashes=0.015625
+p_delays=0
+RR=message
+
+Simulating network... 1466673462.62 0.000225067138672
+setting weight vars... 1466673463.23 0.601273059845
+converting to unweighted... 1466673463.33 0.102341890335
+z3 to cnf... 1466673463.62 0.293703079224
+cnf to dimacs... 1466673463.63 0.00696992874146
+saving dimacs to file... 1466673467.85 4.21928691864
+
+num_vars = 4825
+num_clauses = 9946
+
+running SharpSat on file... 1466673467.86 0.00801301002502
+('cmd >>>', './sharpSAT umc_dimacs.txt > num_sols.txt')
+('cmd >>>', 'python3 run_cmd_py3.py temp_cmd_file.txt temp_status.txt 2400')
+sharpSAT success
+reading SharpSat's output...
+
+
+
+sharpSAT_time = 17.3907
+numSols = 1532720589897999898526795061528631482613723308267238424278265666049508232673435191481849466119738829826542321968536409735899068979932731891166961850988335011352455766613580391473328487165137158084666646526453034437513866553876285669078232933218167744427992828172704828747695710061961953056859245253861482427541227667857941599100979980573343992984546956197199052525623897662259018410977761235984925177620758135148279109262292137621485369808423684660645117929078573980647049008442781945790957505930803481322089916921298225244331749878696060666497652633705029777525519139929180607656618057314585213999049549695257384188451845410961470590515663921502343226946352322014650859641
+denom = 1.702913031704546543980093030E+672
+prob = 0.9000580542647025566234872759
+
+
+
+RETURNING priorityScore... 1466673485.34 17.4794089794
+###############################################
+###############################################
+
+
+###############################################
+###############################################
+RUNNING monte_carlo_Score... 1466673485.34 0.00371599197388
+
+epsilon=0.01
+confidence=0.999
+RR=message
+p_omissions=0.015625
+p_crashes=0.015625
+
+
+num_iterations 34539
+Progress:0.00%
+Progress:11.86%
+Progress:23.72%
+Progress:35.58%
+Progress:47.44%
+Progress:59.30%
+Progress:71.15%
+Progress:83.01%
+Progress:94.87%
+
+prob 0.888155418512
+
+RETURNING monte_carlo_Score... 1466673582.71 97.3664731979
+###############################################
+###############################################
+
+
+###############################################
+###############################################
+RUNNING monte_carlo_Score_thread... 1466673582.71 2.88486480713e-05
+
+epsilon=0.01
+confidence=0.999
+RR=message
+p_omissions=0.015625
+p_crashes=0.015625
+
+
+num_iterations 34539
+Spawned Process 0
+Spawned Process 1
+Spawned Process 2
+Thread0 Progress:0.00%
+Thread0 Progress:47.44%
+Thread0 Progress:94.88%
+Thread2 Progress:0.00%
+Thread2 Progress:47.43%
+Thread2 Progress:94.87%
+Thread3 Progress:0.00%
+Thread3 Progress:47.43%
+Thread3 Progress:94.87%
+Thread1 Progress:0.00%
+Thread1 Progress:47.43%
+Thread1 Progress:94.87%
+Spawned Process 3
+Waiting for processes to end...
+All processes ended...
+
+prob 0.893945974116
+
+RETURNING monte_carlo_Score_thread... 1466673609.66 26.9532530308
+###############################################
+###############################################
+
+
+
+#Final Probabilities:
+
+successProb bit-adder        	(0.6109734260424854, 0.963541862434762) 687.908948183
+successProb OPT              	((0.7839117130666531, 0.9313980407371462), 'Timeout') 2594.94178104
+successProb NO OPT           	((0.8660499542120862, 0.9062208519998526), 'Timeout') 4220.08500385
+priorityScore messageRR      	0.9000580542647025566234872759 22.7149450779
+monte_carlo messageRR        	0.888155418512 97.3665041924
+monte_carlo thread messageRR 	0.893945974116 26.9569768906
+
+
+Total Time taken = 7649.97853994
+
+
+End Time 1466673609.67
+###############################################
+###############################################
+
+Finished CEGAR!

@@ -386,6 +386,32 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{Results}
+\framesubtitle{Scaling}
+
+	Settings with the following sizes can be solved within 45 minutes:
+
+	\begin{table}
+	\begin{tabular}{l | c | c | c | c}
+	Approach & Edges & Nodes & Messages & Timeout\\
+	\hline \hline
+	Naive & 17 & 7 & 7 & 7\\
+	Naive+Opt & 17 & 7 & 7 & 7\\
+	WMC & 20 & 8 & 8 & 8\\
+	Bit-Adder & 22 & 9 & 9 & 9\\
+	Monte-Carlo* & 80 & 32 & 32 & 32\\
+	Monte-Carlo Threaded*$^{\dagger}$ & 112 & 45 & 45 & 45\\
+	\end{tabular}
+	\caption{Problem Scaling}
+	\end{table}
+	% $\\ \\$
+	*$\ \epsilon=0.01, \delta=0.001$\\
+	$^{\dagger}$\ 4 threads on a quad-core machine
+
+
+\end{frame}
+
+\begin{frame}
 \frametitle{What Next?}
 	\begin{itemize}
 	\item Heuristics
