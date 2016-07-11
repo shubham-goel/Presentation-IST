@@ -18,6 +18,7 @@
 \author[Shubham Goel]{Shubham Goel \inst{1}, Guillermo Navas-Rodriguez \inst{2}, Guy Avni \inst{3} and Thomas Henzinger \inst{3}}
 \institute[IIT Bombay]{
   \inst{1} Indian Institute of Technology, Bombay\\
+  \inst{2} Malardalen University, Sweden\\
   \inst{3} IST Austria\\[1ex]
 }
 \date[Summer 2016]{Summer 2016}
@@ -202,7 +203,7 @@
 \frametitle{The Counting Approach}
 	Build a SAT Program : $ f $ that simulates the network\\[2ex]
 	Satisfying assignment $\sigma$\ \leftrightarrow\ A fault sequence that leads to a \textit{Bad} outcome\\
-	\textit{Bad} outcome: All messages don't arrive on time\\[3ex]
+	\textit{Bad} outcome: Not all messages arrive on time\\[3ex]
 	% \vspace*{-5pt}
 	% $$ \sigma \vDash f \implies \neg(\text{All Message Arrive by time t}) $$
 	\pause
@@ -247,7 +248,7 @@
 
 \begin{frame}
 \frametitle{The Counting Approach} %What is literal-WMC?
-\framesubtitle{Literal-WMC [Chakraborty 2015]}
+\framesubtitle{Literal-WMC [Chakraborty, Kuldeep, Vardi 2015]}
 
 	Each literal $l$\ is assigned a weight s.t.\\
 	\vspace*{-5pt}
@@ -266,7 +267,7 @@
 
 \begin{frame}
 \frametitle{The Counting Approach}
-\framesubtitle{Literal-WMC [Chakraborty 2015]}
+\framesubtitle{Literal-WMC [Chakraborty, Kuldeep, Vardi 2015]}
 	SAT formula $ f $\ that simulates the network. (As described earlier)\\[1ex]
 	We made certain modifications to $f$, while preserving its one-one correspondence properties, such that
 	% % Every crash sequence \mapsto\ a unique assignment \sigma\
@@ -279,13 +280,12 @@
 	% \pause
 	% This is very similar to what Weighted Model Counting offers!
 	$$\exists \text{ Weight assignment to all $l \in L$, such that},$$
-	$$WMC(f) = Score(\text{Forwarding Scheme})$$
+	$$WMC(f) = 1-Score(\text{Forwarding Scheme})$$
 \end{frame}
 
 \begin{frame}
 \frametitle{The Counting Approach}
-\framesubtitle{WMC \to \ UMC Reduction [Chakraborty 2015]}
-
+\framesubtitle{WMC \to \ UMC Reduction [Chakraborty, Kuldeep, Vardi 2015]}
 	% \begin{block}{WMC}
 	% Let $f$ be a $SAT$ formula
 	% % \begin{eqnarray}
@@ -302,7 +302,7 @@
 	% We had to make modifications to use the WMC to UMC Reduction\footnote{\href{http://ijcai.org/Proceedings/15/Papers/103.pdf}{From Weighted to Unweighted Model Counting}}\\
 	\begin{itemize}
 		\item We use the WMC \to \ UMC Reduction technique
-		\item The problem of Scoring(Forwarding Scheme) has reduced to counting satisfying assignments to a SAT formula 
+		\item The problem of Scoring(Forwarding Scheme) has reduced to counting satisfying assignments to a SAT formula
 	\end{itemize}
 \end{frame}
 
@@ -320,7 +320,7 @@
 	\item Approximate
 		\begin{itemize}
 		\item Cryptominsat\footnote{https://github.com/msoos/cryptominisat}
-		\item ApproxMC [Chakraborty 2015]\footnote{https://www.cs.rice.edu/CS/Verification/Projects/ApproxMC/Paper.pdf}\\[3ex]
+		\item ApproxMC [Chakraborty et al 2015]\footnote{https://www.cs.rice.edu/CS/Verification/Projects/ApproxMC/Paper.pdf}\\[3ex]
 		\end{itemize}
 	\end{itemize}
 	*SharpSAT gives the best results
@@ -347,7 +347,7 @@
 \frametitle{The Iterative Approach}
 	Build a SAT Program : $ f $ that simulates the network\\[2ex]
 	Satisfying assignment $\sigma$\ \leftrightarrow\ A fault sequence that leads to a \textit{Bad} outcome\\
-	\textit{Bad} outcome: All messages don't arrive on time\\[3ex]
+	\textit{Bad} outcome: Not all messages arrive on time\\[3ex]
 	\vspace*{-10pt}
 	\begin{figure}
 	\includegraphics[scale=0.4]{media/Real_Line.png}
@@ -355,7 +355,7 @@
 	\vspace*{-10pt}
 	\begin{itemize}
 	\item We iteratively examine particular sample spaces to reduce uncertainity
-	\item We examine the sample spaces of exactly $k$\ crashes occuring, $k\in\{0,1,2...\}$
+	\item We examine the sample spaces of exactly $k$\ crashes occuring, $k\in\{0,1,2...\}$. We assume fault probabilitites are low.
 	\end{itemize}
 \end{frame}
 
@@ -421,6 +421,7 @@
 	\item Use a SAT counting tool
 	\item Update probability bounds
 	\end{itemize}
+	Note: There is little work on counting satisfying assignments to SMT formulas
 \end{frame}
 
 \begin{frame}
@@ -478,18 +479,14 @@
 \begin{frame}
 \frametitle{What Next?}
 	\begin{itemize}
-	\item Heuristics
+	\item Find good \textit{Forwarding Schemes}
 		\begin{itemize}
-		\item We have noticed some heuristics consistently lead to better priority schemes
-		\end{itemize}
-	\item Improving Priority Schemes
-		\begin{itemize}
-		\item Try to find ways to iteratively improve priority schemes
-		\item Compare conditional probabilities of messages arriving on time
+		\item Heuristics
+		\item Improving Priority Schemes
 		\end{itemize}
 	\item Finding Complexity Bounds
 		\begin{itemize}
-		\item Prove complexity bounds for this problem
+		\item Prove complexity bounds for these problems
 		\end{itemize}
 	\end{itemize}
 \end{frame}
